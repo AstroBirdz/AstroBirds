@@ -1,0 +1,980 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0x33beb7Fb046a589496a34D1fDe319325F521E456",
+    "txHash": "0x2bc2980d5506c66e1f1379346b93936bd0c720d567692c30bee6b89542cd93d0",
+    "deployTransaction": {
+      "hash": "0x2bc2980d5506c66e1f1379346b93936bd0c720d567692c30bee6b89542cd93d0",
+      "type": 0,
+      "accessList": null,
+      "blockHash": null,
+      "blockNumber": null,
+      "transactionIndex": null,
+      "confirmations": 0,
+      "from": "0x6baC3dF9Bf14c26448014f7fCc462606E22A65de",
+      "gasPrice": {
+        "type": "BigNumber",
+        "hex": "0x04a817c800"
+      },
+      "gasLimit": {
+        "type": "BigNumber",
+        "hex": "0x075da0"
+      },
+      "to": null,
+      "value": {
+        "type": "BigNumber",
+        "hex": "0x00"
+      },
+      "nonce": 3,
+      "data": "0x608060405234801561001057600080fd5b50600080546001600160a01b031916339081178255604051909182917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a350610759806100616000396000f3fe60806040526004361061007b5760003560e01c80639623609d1161004e5780639623609d1461011157806399a88ec414610124578063f2fde38b14610144578063f3b7dead146101645761007b565b8063204e1c7a14610080578063715018a6146100bc5780637eff275e146100d35780638da5cb5b146100f3575b600080fd5b34801561008c57600080fd5b506100a061009b366004610515565b610184565b6040516001600160a01b03909116815260200160405180910390f35b3480156100c857600080fd5b506100d1610215565b005b3480156100df57600080fd5b506100d16100ee366004610554565b610292565b3480156100ff57600080fd5b506000546001600160a01b03166100a0565b6100d161011f36600461058c565b61031c565b34801561013057600080fd5b506100d161013f366004610554565b6103ad565b34801561015057600080fd5b506100d161015f366004610515565b610405565b34801561017057600080fd5b506100a061017f366004610515565b6104ef565b6000806000836001600160a01b03166040516101aa90635c60da1b60e01b815260040190565b600060405180830381855afa9150503d80600081146101e5576040519150601f19603f3d011682016040523d82523d6000602084013e6101ea565b606091505b5091509150816101f957600080fd5b8080602001905181019061020d9190610538565b949350505050565b6000546001600160a01b031633146102485760405162461bcd60e51b815260040161023f906106c0565b60405180910390fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6000546001600160a01b031633146102bc5760405162461bcd60e51b815260040161023f906106c0565b6040516308f2839760e41b81526001600160a01b038281166004830152831690638f283970906024015b600060405180830381600087803b15801561030057600080fd5b505af1158015610314573d6000803e3d6000fd5b505050505050565b6000546001600160a01b031633146103465760405162461bcd60e51b815260040161023f906106c0565b60405163278f794360e11b81526001600160a01b03841690634f1ef286903490610376908690869060040161065d565b6000604051808303818588803b15801561038f57600080fd5b505af11580156103a3573d6000803e3d6000fd5b5050505050505050565b6000546001600160a01b031633146103d75760405162461bcd60e51b815260040161023f906106c0565b604051631b2ce7f360e11b81526001600160a01b038281166004830152831690633659cfe6906024016102e6565b6000546001600160a01b0316331461042f5760405162461bcd60e51b815260040161023f906106c0565b6001600160a01b0381166104945760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b606482015260840161023f565b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b6000806000836001600160a01b03166040516101aa906303e1469160e61b815260040190565b600060208284031215610526578081fd5b81356105318161070b565b9392505050565b600060208284031215610549578081fd5b81516105318161070b565b60008060408385031215610566578081fd5b82356105718161070b565b915060208301356105818161070b565b809150509250929050565b6000806000606084860312156105a0578081fd5b83356105ab8161070b565b925060208401356105bb8161070b565b9150604084013567ffffffffffffffff808211156105d7578283fd5b818601915086601f8301126105ea578283fd5b8135818111156105fc576105fc6106f5565b604051601f8201601f19908116603f01168101908382118183101715610624576106246106f5565b8160405282815289602084870101111561063c578586fd5b82602086016020830137856020848301015280955050505050509250925092565b600060018060a01b038416825260206040818401528351806040850152825b818110156106985785810183015185820160600152820161067c565b818111156106a95783606083870101525b50601f01601f191692909201606001949350505050565b6020808252818101527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604082015260600190565b634e487b7160e01b600052604160045260246000fd5b6001600160a01b038116811461072057600080fd5b5056fea2646970667358221220d849f96f3086b9f82cdcf665adb8c697ace05638da1c7c16ab2d26293717af6764736f6c63430008020033",
+      "r": "0x5c0d83364b8de0a5f758416a79d5e2746dcb2844f1e614deb66f0d11e88cc498",
+      "s": "0x38be1315b6f9de234b2a185d08d065c65acfe0a0496b68cf150145bf466efa1f",
+      "v": 148,
+      "creates": "0x33beb7Fb046a589496a34D1fDe319325F521E456",
+      "chainId": 56
+    }
+  },
+  "proxies": [
+    {
+      "address": "0x3D87cF0033CB80E760E33eDcab38C367541cfeab",
+      "txHash": "0x276a45f8bf12d03d8451502cf66a66dc10c65e42e121c0910d318121199de1ef",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xc1Ae31019e848393D153440483Ff27A0e160eb90",
+      "txHash": "0x1b71c94cc94aa0f45eba54c581479e0ab51058e67d337879f090ac5b50b09b2e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x79B51129dc20ce763641B79E9F0e2A82EF860821",
+      "txHash": "0xa6d58cb87add0e5928b76cac1c0c00813f5df8480f9e8d8a4b250a0c38c8dad6",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "e4c96317a7257a72c8792f8962630b9b14812c9d49bb8a09529bb3a5af2214b1": {
+      "address": "0xa594F403F271eA564F23b027c53985242355FCb1",
+      "txHash": "0x062b712b594317fb04573f2a16d995cbe301f1f0abaa4e706bacccedf23dc925",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:21"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:26"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:30"
+          },
+          {
+            "contract": "ERC165Upgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol:35"
+          },
+          {
+            "contract": "ERC721Upgradeable",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol:24"
+          },
+          {
+            "contract": "ERC721Upgradeable",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol:27"
+          },
+          {
+            "contract": "ERC721Upgradeable",
+            "label": "_owners",
+            "type": "t_mapping(t_uint256,t_address)",
+            "src": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol:30"
+          },
+          {
+            "contract": "ERC721Upgradeable",
+            "label": "_balances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol:33"
+          },
+          {
+            "contract": "ERC721Upgradeable",
+            "label": "_tokenApprovals",
+            "type": "t_mapping(t_uint256,t_address)",
+            "src": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol:36"
+          },
+          {
+            "contract": "ERC721Upgradeable",
+            "label": "_operatorApprovals",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+            "src": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol:39"
+          },
+          {
+            "contract": "ERC721Upgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)44_storage",
+            "src": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol:418"
+          },
+          {
+            "contract": "EmpireCollection",
+            "label": "_tokenIds",
+            "type": "t_uint256",
+            "src": "contracts/EmpireCollection.sol:8"
+          },
+          {
+            "contract": "EmpireCollection",
+            "label": "royalty",
+            "type": "t_uint256",
+            "src": "contracts/EmpireCollection.sol:10"
+          },
+          {
+            "contract": "EmpireCollection",
+            "label": "totalSupply",
+            "type": "t_uint256",
+            "src": "contracts/EmpireCollection.sol:11"
+          },
+          {
+            "contract": "EmpireCollection",
+            "label": "itemCreator",
+            "type": "t_mapping(t_uint256,t_address)",
+            "src": "contracts/EmpireCollection.sol:12"
+          },
+          {
+            "contract": "EmpireCollection",
+            "label": "Items",
+            "type": "t_mapping(t_uint256,t_string_storage)",
+            "src": "contracts/EmpireCollection.sol:13"
+          },
+          {
+            "contract": "EmpireCollection",
+            "label": "collectionOwner",
+            "type": "t_address",
+            "src": "contracts/EmpireCollection.sol:14"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_uint256,t_string_storage)": {
+            "label": "mapping(uint256 => string)"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+            "label": "mapping(address => mapping(address => bool))"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_array(t_uint256)44_storage": {
+            "label": "uint256[44]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "f1c0716c35a0ecd84a41f85831c86bdbc198308af3586c94a827c5961118cf44": {
+      "address": "0xeBDD5A92110f1DC90dd0A498a2d4E48147C36fe5",
+      "txHash": "0x908eae076e30a7b9018204d2ca8ed264dc05c92b811075142827d61f988814c8",
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "53d6b3df89a89560a5db7d5f6b0524eb39b1ef9894895eca666dc70dfe37b2ce": {
+      "address": "0x1AfbACFb8766Cb14d053F36BE4B2105A58cf06d1",
+      "txHash": "0x375f2781edb2fb18fb47c29b5c4a64ad73eb23f15620d72258d30262991a8d37",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:21"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:26"
+          },
+          {
+            "contract": "EmpireMarketplaceV2",
+            "label": "serviceFee",
+            "type": "t_uint256",
+            "src": "contracts/EmpireMarketplaceV2.sol:54"
+          },
+          {
+            "contract": "EmpireMarketplaceV2",
+            "label": "feeAddress",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV2.sol:55"
+          },
+          {
+            "contract": "EmpireMarketplaceV2",
+            "label": "marketplaceOwner",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV2.sol:56"
+          },
+          {
+            "contract": "EmpireMarketplaceV2",
+            "label": "empireToken",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV2.sol:57"
+          },
+          {
+            "contract": "EmpireMarketplaceV2",
+            "label": "itemsForSale",
+            "type": "t_array(t_struct(AuctionItem)2840_storage)dyn_storage",
+            "src": "contracts/EmpireMarketplaceV2.sol:58"
+          },
+          {
+            "contract": "EmpireMarketplaceV2",
+            "label": "activeItems",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_bool))",
+            "src": "contracts/EmpireMarketplaceV2.sol:61"
+          },
+          {
+            "contract": "EmpireMarketplaceV2",
+            "label": "validERC",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts/EmpireMarketplaceV2.sol:62"
+          },
+          {
+            "contract": "EmpireMarketplaceV2",
+            "label": "auctionItemId",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "src": "contracts/EmpireMarketplaceV2.sol:63"
+          },
+          {
+            "contract": "EmpireMarketplaceV2",
+            "label": "pendingReturns",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))",
+            "src": "contracts/EmpireMarketplaceV2.sol:64"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_struct(AuctionItem)2840_storage)dyn_storage": {
+            "label": "struct EmpireMarketplaceV2.AuctionItem[]"
+          },
+          "t_struct(AuctionItem)2840_storage": {
+            "label": "struct EmpireMarketplaceV2.AuctionItem",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "tokenAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "tokenId",
+                "type": "t_uint256"
+              },
+              {
+                "label": "askingPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isSold",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidItem",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "bidderAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "ERC20",
+                "type": "t_address"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_bool))": {
+            "label": "mapping(address => mapping(uint256 => bool))"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))": {
+            "label": "mapping(address => mapping(address => mapping(uint256 => uint256)))"
+          }
+        }
+      }
+    },
+    "5b3a2b94bface3f5bf1a2fb069b737b06c88dd3fb26283fa9cdb043e757e290d": {
+      "address": "0x2455688e00e0F9f033beD2379FB1752AFB91a4E1",
+      "txHash": "0xcca88c38fe32ad042076196790cd2d6205ffa5d2fbeea592fba868dcb7a45894",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:21"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:26"
+          },
+          {
+            "contract": "EmpireMarketplaceV3",
+            "label": "serviceFee",
+            "type": "t_uint256",
+            "src": "contracts/EmpireMarketplaceV3.sol:54"
+          },
+          {
+            "contract": "EmpireMarketplaceV3",
+            "label": "feeAddress",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV3.sol:55"
+          },
+          {
+            "contract": "EmpireMarketplaceV3",
+            "label": "marketplaceOwner",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV3.sol:56"
+          },
+          {
+            "contract": "EmpireMarketplaceV3",
+            "label": "empireToken",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV3.sol:57"
+          },
+          {
+            "contract": "EmpireMarketplaceV3",
+            "label": "itemsForSale",
+            "type": "t_array(t_struct(AuctionItem)5693_storage)dyn_storage",
+            "src": "contracts/EmpireMarketplaceV3.sol:58"
+          },
+          {
+            "contract": "EmpireMarketplaceV3",
+            "label": "activeItems",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_bool))",
+            "src": "contracts/EmpireMarketplaceV3.sol:61"
+          },
+          {
+            "contract": "EmpireMarketplaceV3",
+            "label": "validERC",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts/EmpireMarketplaceV3.sol:62"
+          },
+          {
+            "contract": "EmpireMarketplaceV3",
+            "label": "auctionItemId",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "src": "contracts/EmpireMarketplaceV3.sol:63"
+          },
+          {
+            "contract": "EmpireMarketplaceV3",
+            "label": "pendingReturns",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))",
+            "src": "contracts/EmpireMarketplaceV3.sol:64"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_struct(AuctionItem)5693_storage)dyn_storage": {
+            "label": "struct EmpireMarketplaceV3.AuctionItem[]"
+          },
+          "t_struct(AuctionItem)5693_storage": {
+            "label": "struct EmpireMarketplaceV3.AuctionItem",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "tokenAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "tokenId",
+                "type": "t_uint256"
+              },
+              {
+                "label": "askingPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isSold",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidItem",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "bidderAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "ERC20",
+                "type": "t_address"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_bool))": {
+            "label": "mapping(address => mapping(uint256 => bool))"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))": {
+            "label": "mapping(address => mapping(address => mapping(uint256 => uint256)))"
+          }
+        }
+      }
+    },
+    "8c4036c0eae2d87b23f42fff4ac965f0e62fb6fd2159eb64b52fb059a51c6514": {
+      "address": "0xF3711b31D4123f1a7DB2Df33acbD32e82Eb6C692",
+      "txHash": "0xa6e89728c664283633144c73e751b56706ecdb61e3180c27bb904406b833f8fc",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:21"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:26"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "serviceFee",
+            "type": "t_uint256",
+            "src": "contracts/EmpireMarketplaceV4.sol:54"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "feeAddress",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV4.sol:55"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "marketplaceOwner",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV4.sol:56"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "empireToken",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV4.sol:57"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "itemsForSale",
+            "type": "t_array(t_struct(AuctionItem)8559_storage)dyn_storage",
+            "src": "contracts/EmpireMarketplaceV4.sol:58"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "activeItems",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_bool))",
+            "src": "contracts/EmpireMarketplaceV4.sol:61"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "validERC",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts/EmpireMarketplaceV4.sol:62"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "auctionItemId",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "src": "contracts/EmpireMarketplaceV4.sol:63"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "pendingReturns",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))",
+            "src": "contracts/EmpireMarketplaceV4.sol:64"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "feeAggregatorAddress",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV4.sol:69"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "AggregatorFee",
+            "type": "t_uint256",
+            "src": "contracts/EmpireMarketplaceV4.sol:70"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_struct(AuctionItem)8559_storage)dyn_storage": {
+            "label": "struct EmpireMarketplaceV4.AuctionItem[]"
+          },
+          "t_struct(AuctionItem)8559_storage": {
+            "label": "struct EmpireMarketplaceV4.AuctionItem",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "tokenAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "tokenId",
+                "type": "t_uint256"
+              },
+              {
+                "label": "askingPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isSold",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidItem",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "bidderAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "ERC20",
+                "type": "t_address"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_bool))": {
+            "label": "mapping(address => mapping(uint256 => bool))"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))": {
+            "label": "mapping(address => mapping(address => mapping(uint256 => uint256)))"
+          }
+        }
+      }
+    },
+    "281f2ed75c2c8ebba0d89c6dd947a58f6a63615145e055a1de02dfd3ac00c31e": {
+      "address": "0xA7e971dc3318DA698f4E94acf6E3cd483FE305E7",
+      "txHash": "0xc235bb493b8fa684de9a80fc59aaa59bd04b8fb0aef451ef9e7bc5543517186b",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:21"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:26"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "serviceFee",
+            "type": "t_uint256",
+            "src": "contracts/EmpireMarketplaceV4.sol:54"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "feeAddress",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV4.sol:55"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "marketplaceOwner",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV4.sol:56"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "empireToken",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV4.sol:57"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "itemsForSale",
+            "type": "t_array(t_struct(AuctionItem)8559_storage)dyn_storage",
+            "src": "contracts/EmpireMarketplaceV4.sol:58"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "activeItems",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_bool))",
+            "src": "contracts/EmpireMarketplaceV4.sol:61"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "validERC",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts/EmpireMarketplaceV4.sol:62"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "auctionItemId",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "src": "contracts/EmpireMarketplaceV4.sol:63"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "pendingReturns",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))",
+            "src": "contracts/EmpireMarketplaceV4.sol:64"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "feeAggregatorAddress",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV4.sol:69"
+          },
+          {
+            "contract": "EmpireMarketplaceV4",
+            "label": "AggregatorFee",
+            "type": "t_uint256",
+            "src": "contracts/EmpireMarketplaceV4.sol:70"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_struct(AuctionItem)8559_storage)dyn_storage": {
+            "label": "struct EmpireMarketplaceV4.AuctionItem[]"
+          },
+          "t_struct(AuctionItem)8559_storage": {
+            "label": "struct EmpireMarketplaceV4.AuctionItem",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "tokenAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "tokenId",
+                "type": "t_uint256"
+              },
+              {
+                "label": "askingPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isSold",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidItem",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "bidderAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "ERC20",
+                "type": "t_address"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_bool))": {
+            "label": "mapping(address => mapping(uint256 => bool))"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))": {
+            "label": "mapping(address => mapping(address => mapping(uint256 => uint256)))"
+          }
+        }
+      }
+    },
+    "4f1368bd2940e89cc3b2bb2aa0b72789204a68c52d0774473079b21858f2e613": {
+      "address": "0x1f30D90CBD0cde609E529d9aE11fa49aAa4e026d",
+      "txHash": "0x7fafdec658d0bf27ac2f2f78b0023980686023a0854e81257dd07f390bab5b78",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:21"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:26"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "serviceFee",
+            "type": "t_uint256",
+            "src": "contracts/EmpireMarketplaceV6.sol:54"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "feeAddress",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV6.sol:55"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "marketplaceOwner",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV6.sol:56"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "empireToken",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV6.sol:57"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "itemsForSale",
+            "type": "t_array(t_struct(AuctionItem)2487_storage)dyn_storage",
+            "src": "contracts/EmpireMarketplaceV6.sol:58"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "activeItems",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_bool))",
+            "src": "contracts/EmpireMarketplaceV6.sol:61"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "validERC",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts/EmpireMarketplaceV6.sol:62"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "auctionItemId",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+            "src": "contracts/EmpireMarketplaceV6.sol:63"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "pendingReturns",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))",
+            "src": "contracts/EmpireMarketplaceV6.sol:64"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "feeAggregatorAddress",
+            "type": "t_address",
+            "src": "contracts/EmpireMarketplaceV6.sol:69"
+          },
+          {
+            "contract": "EmpireMarketplaceV6",
+            "label": "AggregatorFee",
+            "type": "t_uint256",
+            "src": "contracts/EmpireMarketplaceV6.sol:70"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_struct(AuctionItem)2487_storage)dyn_storage": {
+            "label": "struct EmpireMarketplaceV6.AuctionItem[]"
+          },
+          "t_struct(AuctionItem)2487_storage": {
+            "label": "struct EmpireMarketplaceV6.AuctionItem",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "tokenAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "tokenId",
+                "type": "t_uint256"
+              },
+              {
+                "label": "askingPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isSold",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidItem",
+                "type": "t_bool"
+              },
+              {
+                "label": "bidPrice",
+                "type": "t_uint256"
+              },
+              {
+                "label": "bidderAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "ERC20",
+                "type": "t_address"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_bool))": {
+            "label": "mapping(address => mapping(uint256 => bool))"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(address => mapping(uint256 => uint256))"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_uint256)))": {
+            "label": "mapping(address => mapping(address => mapping(uint256 => uint256)))"
+          }
+        }
+      }
+    }
+  }
+}
