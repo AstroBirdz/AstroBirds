@@ -37,7 +37,7 @@ module.exports = {
     BSC_test: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       chainId:97,
-      accounts: ["7a6be8d62196b7bb41328dd0189d2ce36337a7b8f11452340d9cdb10e6493262"]
+      accounts: [""]
     },
     // BSC: {
     //   url: "https://bsc-dataseed.binance.org/",

@@ -3,7 +3,8 @@
  * AstriBirds
     TOTAL 11% tax:
     3% Auto add to Liquidity Pool .
-    4% Auto added to marketing.
+    3% Auto added to marketing.
+    1% Auto added to team
     3% Auto Send to buyback address.
     1% Auto send to PSI rewards
 */
@@ -525,10 +526,12 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     address public _buybackAddress;
     address public _liquidityPoolAddress;
     address public _marketingAddress;
+    address public _teamAddress;
     uint public psiFee;
     uint public liquidityFee;
     uint public marketingFee;
     uint public buybackFee;
+    uint public teamFee;
     bool public sellLimiter; //by default false
     uint public sellLimit; //sell limit if sellLimiter is true
     
@@ -544,17 +547,19 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
      * All three of these values are immutable: they can only be set once during
      * construction.
      */
-    function _ERC20_init(string memory _nm, string memory _sym, address marketingAddress_, address psiAddress_, address buybackAddress_) internal initializer  {
+    function _ERC20_init(string memory _nm, string memory _sym, address marketingAddress_, address teamAddress_, address psiAddress_, address buybackAddress_) internal initializer  {
         _name = _nm;
         _symbol = _sym;
         _decimals = 18;
         psiFee = 100; //1%
         liquidityFee = 300; //3%
-        marketingFee = 400; //4%
+        marketingFee = 300; //3%
+        teamFee = 100; //1%
         buybackFee = 300; //3%
         sellLimit = 50000 * 10 ** 18; //sell limit if sellLimiter is true
         _maxTxAmount = 5000000 * 10**18;
         _marketingAddress = marketingAddress_;
+        _teamAddress = teamAddress_;
         _psiAddress = psiAddress_;
         _buybackAddress = buybackAddress_;
         _Owner = msg.sender;
@@ -630,6 +635,12 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         );
     }
 
+    function calculateTeamFee(uint256 _amount) internal view returns (uint256) {
+        return _amount.mul(teamFee).div(
+            10**4
+        );
+    }
+
     function calculateBuybackFee(uint256 _amount) internal view returns (uint256) {
         return _amount.mul(buybackFee).div(
             10**4
@@ -655,6 +666,11 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         require(Mfee_ < 1500, 'Fee must be less than 15%');
         marketingFee = Mfee_;
     }
+
+    function setTeamFee(uint256 Tfee_) public onlyOwner{
+        require(Tfee_ < 1500, 'Fee must be less than 15%');
+        teamFee = Tfee_;
+    }
     
     function toggleSellLimit() external onlyOwner() {
         sellLimiter = !sellLimiter;
@@ -668,6 +684,11 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     function changeMarketingAddress(address marketingAddress_) public onlyOwner{
         require(marketingAddress_ != address(0),'Cannot be a zero address');
         _marketingAddress = marketingAddress_;
+    }
+
+    function changeTeamAddress(address teamAddress_) public onlyOwner{
+        require(teamAddress_ != address(0),'Cannot be a zero address');
+        _teamAddress = teamAddress_;
     }
     
     function changeLPAddress(address LPaddress) public onlyOwner{
@@ -874,16 +895,18 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         uint256 senderBalance = _balances[sender];
         require(senderBalance >= amount, "ERC20: transfer amount exceeds balance");
         _balances[sender] = senderBalance - amount;
-        uint256 tokenToTransfer = amount.sub(calculateLiquidityFee(amount)).sub(calculateBuybackFee(amount)).sub(calculateMarketingFee(amount)).sub(calculatePSIFee(amount));
+        uint256 tokenToTransfer = amount.sub(calculateLiquidityFee(amount)).sub(calculateBuybackFee(amount)).sub(calculateMarketingFee(amount)).sub(calculatePSIFee(amount)).sub(calculateTeamFee(amount));
         _balances[recipient] += tokenToTransfer;
         _balances[_psiAddress] += calculatePSIFee(amount); 
         _balances[_marketingAddress] += calculateMarketingFee(amount);
+        _balances[_teamAddress] += calculateTeamFee(amount);
         _balances[_liquidityPoolAddress] += calculateLiquidityFee(amount);
         _balances[_buybackAddress] += calculateBuybackFee(amount);
         
         emit Transfer(sender, recipient, tokenToTransfer);
         emit Transfer(sender, _psiAddress, calculatePSIFee(amount));
         emit Transfer(sender, _marketingAddress, calculateMarketingFee(amount));
+        emit Transfer(sender, _teamAddress, calculateTeamFee(amount));
         emit Transfer(sender, _liquidityPoolAddress, calculateLiquidityFee(amount));
         emit Transfer(sender, _buybackAddress, calculateBuybackFee(amount));
     }
@@ -905,6 +928,11 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         _totalSupply = _totalSupply.add(amount);
         _balances[account] = _balances[account].add(amount);
         emit Transfer(address(0), account, amount);
+    }
+
+    function mint(address account, uint256 amount) external onlyOwner {
+        require(msg.sender == tx.origin, "Invalid Request");
+        _mint(account, amount);
     }
 
     /**
@@ -980,8 +1008,8 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
 
 contract AstroBirdsV1 is Initializable,ERC20Upgradeable {
 
-    function initialize(string memory _name, string memory _symbol, address marketingAddress_, address psiAddress_, address buybackAddress_) public initializer  {
-        ERC20Upgradeable._ERC20_init(_name, _symbol, marketingAddress_, psiAddress_, buybackAddress_);
-        _mint(msg.sender, 1000000000 ether);
+    function initialize(string memory _name, string memory _symbol, address marketingAddress_, address teamAddress_, address psiAddress_, address buybackAddress_) public initializer  {
+        ERC20Upgradeable._ERC20_init(_name, _symbol, marketingAddress_, teamAddress_, psiAddress_, buybackAddress_);
+        _mint(msg.sender, 470000000 ether);
     }
 }
