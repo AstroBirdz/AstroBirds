@@ -904,11 +904,6 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         _balances[_buybackAddress] += calculateBuybackFee(amount);
         
         emit Transfer(sender, recipient, tokenToTransfer);
-        emit Transfer(sender, _psiAddress, calculatePSIFee(amount));
-        emit Transfer(sender, _marketingAddress, calculateMarketingFee(amount));
-        emit Transfer(sender, _teamAddress, calculateTeamFee(amount));
-        emit Transfer(sender, _liquidityPoolAddress, calculateLiquidityFee(amount));
-        emit Transfer(sender, _buybackAddress, calculateBuybackFee(amount));
     }
 
     /** @dev Creates `amount` tokens and assigns them to `account`, increasing
