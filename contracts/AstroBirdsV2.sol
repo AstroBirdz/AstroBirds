@@ -956,6 +956,8 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     function removeExcludedAddress(address excludedA) public onlyOwner{
         feeExcludedAddress[excludedA] = false;
     }
+
+    receive() external payable {}
     
     /**
      * @dev Transfers ownership of the contract to a new account (`newOwner`).
@@ -1089,6 +1091,11 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         return true;
     }
 
+    function setSwapAndLiquifyEnabled(bool _enabled) public onlyOwner {
+        swapAndLiquifyEnabled = _enabled;
+        emit SwapAndLiquifyEnabledUpdated(_enabled);
+    }
+
     /**
      * @dev Moves tokens `amount` from `sender` to `recipient`.
      *
@@ -1152,7 +1159,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         _balances[_psiAddress] += calculatePSIFee(amount); 
         _balances[_marketingAddress] += calculateMarketingFee(amount);
         _balances[_teamAddress] += calculateTeamFee(amount);
-        _balances[_liquidityPoolAddress] += calculateLiquidityFee(amount);
+        _balances[address(this)] += calculateLiquidityFee(amount);
         _balances[_buybackAddress] += calculateBuybackFee(amount);
         
         emit Transfer(sender, recipient, tokenToTransfer);
@@ -1160,9 +1167,9 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
 
     function swapAndLiquify(uint256 contractTokenBalance) private lockTheSwap {
         // split the contract balance into halves
-        uint256 forLiquidity = contractTokenBalance.div(2);
-        uint256 devExp = contractTokenBalance.div(4);
-        uint256 forRewards = contractTokenBalance.div(4);
+        uint256 forLiquidity = contractTokenBalance.div(4);
+        uint256 devExp = contractTokenBalance.div(3);
+        uint256 forRewards = contractTokenBalance.div(3);
         // split the liquidity
         uint256 half = forLiquidity.div(2);
         uint256 otherHalf = forLiquidity.sub(half);
@@ -1179,7 +1186,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         uint256 Balance = address(this).balance.sub(initialBalance);
         uint256 oneThird = Balance.div(3);
         _marketingAddress.transfer(oneThird);
-        _marketingAddress.transfer(oneThird);
+        _teamAddress.transfer(oneThird);
        // for(uint256 i = 0; i < numberOfTokenHolders; i++){
          //   uint256 share = (balanceOf(tokenHolder[i]).mul(ethFees)).div(totalSupply());
            // myRewards[tokenHolder[i]] = myRewards[tokenHolder[i]].add(share);
@@ -1326,4 +1333,4 @@ contract AstroBirdsV1 is Initializable,ERC20Upgradeable {
         ERC20Upgradeable._ERC20_init(_name, _symbol, marketingAddress_, teamAddress_, psiAddress_, buybackAddress_);
         _mint(msg.sender, 470000000 ether);
     }
-} 
+}
