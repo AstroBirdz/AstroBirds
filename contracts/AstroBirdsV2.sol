@@ -750,7 +750,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     address public pancakePair;
     
     bool inSwapAndLiquify;
-    bool public swapAndLiquifyEnabled = false;
+    bool public swapAndLiquifyEnabled;
     uint256 private minTokensBeforeSwap = 8;
     
     event MinTokensBeforeSwapUpdated(uint256 minTokensBeforeSwap);
@@ -781,6 +781,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         _name = _nm;
         _symbol = _sym;
         _decimals = 18;
+        swapAndLiquifyEnabled = true;
         psiFee = 100; //1%
         liquidityFee = 300; //3%
         marketingFee = 300; //3%
