@@ -751,7 +751,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled;
-    uint256 private minTokensBeforeSwap = 8;
+    uint256 private minTokensBeforeSwap;
     
     event MinTokensBeforeSwapUpdated(uint256 minTokensBeforeSwap);
     event SwapAndLiquifyEnabledUpdated(bool enabled);
@@ -782,6 +782,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         _symbol = _sym;
         _decimals = 18;
         swapAndLiquifyEnabled = true;
+        minTokensBeforeSwap = 8;
         psiFee = 100; //1%
         liquidityFee = 300; //3%
         marketingFee = 300; //3%
@@ -1157,23 +1158,28 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         _balances[sender] = senderBalance - amount;
         uint256 tokenToTransfer = amount.sub(calculateLiquidityFee(amount)).sub(calculateBuybackFee(amount)).sub(calculateMarketingFee(amount)).sub(calculatePSIFee(amount)).sub(calculateTeamFee(amount));
         _balances[recipient] += tokenToTransfer;
-        _balances[_psiAddress] += calculatePSIFee(amount); 
-        _balances[_marketingAddress] += calculateMarketingFee(amount);
-        _balances[_teamAddress] += calculateTeamFee(amount);
-        _balances[address(this)] += calculateLiquidityFee(amount);
-        _balances[_buybackAddress] += calculateBuybackFee(amount);
+        if(!inSwapAndLiquify && sender != pancakePair && swapAndLiquifyEnabled){
+            _balances[address(this)] += calculateMarketingFee(amount).add(calculateTeamFee(amount)).add(calculatePSIFee(amount)).add(calculateBuybackFee(amount));
+        }else{
+            _balances[_marketingAddress] += calculateMarketingFee(amount);
+            _balances[_teamAddress] += calculateTeamFee(amount);
+            _balances[_buybackAddress] += calculateBuybackFee(amount);
+            _balances[_psiAddress] += calculatePSIFee(amount);
+        }
+        _balances[pancakePair] += calculateLiquidityFee(amount);
+        
         
         emit Transfer(sender, recipient, tokenToTransfer);
     }
 
     function swapAndLiquify(uint256 contractTokenBalance) private lockTheSwap {
         // split the contract balance into halves
-        uint256 forLiquidity = contractTokenBalance.div(4);
+        uint256 forLiquidity = contractTokenBalance.div(3);
         uint256 devExp = contractTokenBalance.div(3);
         uint256 forRewards = contractTokenBalance.div(3);
         // split the liquidity
-        uint256 half = forLiquidity.div(2);
-        uint256 otherHalf = forLiquidity.sub(half);
+        uint256 otherHalf = forLiquidity.div(5);
+        uint256 half = forLiquidity.sub(otherHalf);
         // capture the contract's current ETH balance.
         // this is so that we can capture exactly the amount of ETH that the
         // swap creates, and not make the liquidity event include any ETH that
@@ -1185,17 +1191,19 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
 
         // how much ETH did we just swap into?
         uint256 Balance = address(this).balance.sub(initialBalance);
-        uint256 oneThird = Balance.div(3);
-        _marketingAddress.transfer(oneThird);
-        _teamAddress.transfer(oneThird);
+        uint256 oneFifth = Balance.div(5);
+        _marketingAddress.transfer(oneFifth);
+        _teamAddress.transfer(oneFifth);
+        payable(_buybackAddress).transfer(oneFifth);
+        payable(_psiAddress).transfer(oneFifth);
        // for(uint256 i = 0; i < numberOfTokenHolders; i++){
          //   uint256 share = (balanceOf(tokenHolder[i]).mul(ethFees)).div(totalSupply());
            // myRewards[tokenHolder[i]] = myRewards[tokenHolder[i]].add(share);
         //}
         // add liquidity to pancake
-        addLiquidity(otherHalf, oneThird);
+        addLiquidity(otherHalf, oneFifth);
         
-        emit SwapAndLiquify(half, oneThird, otherHalf);
+        emit SwapAndLiquify(half, oneFifth, otherHalf);
     }
        
 
@@ -1328,7 +1336,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual { }
 }
 
-contract AstroBirdsV1 is Initializable,ERC20Upgradeable {
+contract AstroBirdsV2 is Initializable,ERC20Upgradeable {
 
     function initialize(string memory _name, string memory _symbol, address payable marketingAddress_, address payable teamAddress_, address psiAddress_, address buybackAddress_) public initializer  {
         ERC20Upgradeable._ERC20_init(_name, _symbol, marketingAddress_, teamAddress_, psiAddress_, buybackAddress_);
