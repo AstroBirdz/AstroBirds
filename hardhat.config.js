@@ -34,18 +34,18 @@ module.exports = {
     //   accounts: [""],
     //   gasPrice: 20000000000
     // },
-    BSC_test: {
-      url: "https://data-seed-prebsc-1-s2.binance.org:8545",
-      chainId:97,
-      accounts: ["7a6be8d62196b7bb41328dd0189d2ce36337a7b8f11452340d9cdb10e6493262"],
-      // gas: 4993756,
-      // gasPrice: 50000000000
-    },
-    // BSC: {
-    //   url: "https://bsc-dataseed.binance.org/",
-    //   chainId: 56,
-    //   accounts: [""]
-    // }
+    // BSC_test: {
+    //   url: "https://data-seed-prebsc-1-s2.binance.org:8545",
+    //   chainId:97,
+    //   accounts: ["7a6be8d62196b7bb41328dd0189d2ce36337a7b8f11452340d9cdb10e6493262"],
+    //   // gas: 4993756,
+    //   // gasPrice: 50000000000
+    // },
+    BSC: {
+      url: "https://bsc-dataseed1.defibit.io/",
+      chainId: 56,
+      accounts: [""]
+    }
   },
   etherscan: {
     // Your API key for Etherscan

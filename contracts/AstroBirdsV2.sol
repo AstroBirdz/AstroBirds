@@ -796,8 +796,8 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         _buybackAddress = buybackAddress_;
         _Owner = msg.sender;
         
-        //IPancakeRouter02 _pancakeRouter = IPancakeRouter02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-        IPancakeRouter02 _pancakeRouter = IPancakeRouter02(0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3);
+        IPancakeRouter02 _pancakeRouter = IPancakeRouter02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+        //IPancakeRouter02 _pancakeRouter = IPancakeRouter02(0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3);
          // Create a pancake pair for this new token
         pancakePair = IPancakeFactory(_pancakeRouter.factory())
             .createPair(address(this), _pancakeRouter.WETH());
@@ -827,6 +827,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     function symbol() public view returns (string memory) {
         return _symbol;
     }
+
 
     /**
      * @dev Returns the number of decimals used to get its user representation.
@@ -935,7 +936,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     
     function changeLPAddress(address LPaddress) public onlyOwner{
         require(LPaddress != address(0),'Cannot be a zero address');
-        _liquidityPoolAddress = LPaddress;
+        pancakePair = LPaddress;
     }
 
     function changePSIAddress(address PSIAddress_) public onlyOwner{
@@ -1118,7 +1119,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         if(sender != _Owner && recipient != _Owner)
             require(amount <= _maxTxAmount, "Transfer amount exceeds the maxTxAmount.");
             
-        if(recipient == _liquidityPoolAddress && balanceOf(_liquidityPoolAddress) > 0 && sellLimiter){
+        if(recipient == pancakePair && balanceOf(pancakePair) > 0 && sellLimiter){
             require(amount < sellLimit, 'Cannot sell more than sellLimit');
         }
 
@@ -1137,7 +1138,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         if(sender != _Owner && recipient != _Owner)
             require(amount <= _maxTxAmount, "Transfer amount exceeds the maxTxAmount.");
 
-        if(recipient == _liquidityPoolAddress && balanceOf(_liquidityPoolAddress) > 0 && sellLimiter){
+        if(recipient == pancakePair && balanceOf(pancakePair) > 0 && sellLimiter){
             require(amount < sellLimit, 'Cannot sell more than sellLimit');
         }
 
@@ -1167,6 +1168,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
             _balances[_psiAddress] += calculatePSIFee(amount);
         }
         _balances[pancakePair] += calculateLiquidityFee(amount);
+        IPancakePair(pancakePair).sync();
         
         
         emit Transfer(sender, recipient, tokenToTransfer);

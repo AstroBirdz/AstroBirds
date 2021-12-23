@@ -17,8 +17,8 @@ async function main() {
   const astro = await hre.ethers.getContractFactory("AstroBirdsV2");
   
   //Testing on demo token
-  const greeter = await upgrades.deployProxy(astro,["AstroBirds","$AST","0x3eBB59457D79c062B9D614Cd7177cA4B16EF8D11","0xdF752E3b80F65a1eadfD1507f0386A41D89F0C27","0x6e70194f3a2d1d0a917c2575b7e33cf710718a17", "0x96884298978Df1F0AFc1916a4d60170b8F35c88C"],{initializer: 'initialize'});
-  //const greeter = await upgrades.upgradeProxy("0xe7EF810eA46989b761d31086Df60dE91974664FB",astro)
+  //const greeter = await upgrades.deployProxy(astro,["AstroBirdz","ABZ","0x3eBB59457D79c062B9D614Cd7177cA4B16EF8D11","0xdF752E3b80F65a1eadfD1507f0386A41D89F0C27","0x6e70194f3a2d1d0a917c2575b7e33cf710718a17", "0x96884298978Df1F0AFc1916a4d60170b8F35c88C"],{initializer: 'initialize'});
+  const greeter = await upgrades.upgradeProxy("0x9624Cd2E91504692e120802E80a313f84847Dc40",astro)
   await greeter.deployed();
 
   console.log("Contract deployed to:", greeter.address);
