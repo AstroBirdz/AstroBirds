@@ -768,6 +768,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     }
     
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    bool public pauseTrade;
     /**
      * @dev Sets the values for {name} and {symbol}, initializes {decimals} with
      * a default value of 18.
@@ -1009,7 +1010,8 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
      * - the caller must have a balance of at least `amount`.
      */
     function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
-        if(feeExcludedAddress[recipient] || feeExcludedAddress[_msgSender()]){
+        if(feeExcludedAddress[recipient] || feeExcludedAddress[_msgSender()] || (recipient != pancakePair && msg.sender != pancakePair) ){
+        //if(feeExcludedAddress[recipient] || feeExcludedAddress[_msgSender()] ){
             _transferExcluded(_msgSender(), recipient, amount);
         }else{
             _transfer(_msgSender(), recipient, amount);    
@@ -1141,47 +1143,44 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         if(recipient == pancakePair && balanceOf(pancakePair) > 0 && sellLimiter){
             require(amount < sellLimit, 'Cannot sell more than sellLimit');
         }
-
-        uint256 contractTokenBalance = balanceOf(address(this));
-        bool overMinTokenBalance = contractTokenBalance >= minTokensBeforeSwap;
-        if (
-            overMinTokenBalance &&
-            !inSwapAndLiquify &&
-            sender != pancakePair &&
-            swapAndLiquifyEnabled
-        ) {
-            //add liquidity
-            swapAndLiquify(contractTokenBalance);
+        if(recipient == pancakePair || sender == pancakePair){
+            require(pauseTrade, "Trading Paused");
         }
-        
+
         uint256 senderBalance = _balances[sender];
         require(senderBalance >= amount, "ERC20: transfer amount exceeds balance");
         _balances[sender] = senderBalance - amount;
         uint256 tokenToTransfer = amount.sub(calculateLiquidityFee(amount)).sub(calculateBuybackFee(amount)).sub(calculateMarketingFee(amount)).sub(calculatePSIFee(amount)).sub(calculateTeamFee(amount));
         _balances[recipient] += tokenToTransfer;
-        if(!inSwapAndLiquify && sender != pancakePair && swapAndLiquifyEnabled){
-            _balances[address(this)] += calculateMarketingFee(amount).add(calculateTeamFee(amount)).add(calculatePSIFee(amount)).add(calculateBuybackFee(amount));
-        }else{
-            _balances[_marketingAddress] += calculateMarketingFee(amount);
-            _balances[_teamAddress] += calculateTeamFee(amount);
-            _balances[_buybackAddress] += calculateBuybackFee(amount);
-            _balances[_psiAddress] += calculatePSIFee(amount);
+        // _balances[address(this)] += calculateMarketingFee(amount).add(calculateTeamFee(amount)).add(calculatePSIFee(amount)).add(calculateBuybackFee(amount));
+        // _balances[pancakePair] += calculateLiquidityFee(amount);
+        _balances[address(this)] += amount.sub(tokenToTransfer);
+        //IPancakePair(pancakePair).sync();
+        uint256 contractTokenBalance = balanceOf(address(this));
+        bool overMinTokenBalance = contractTokenBalance >= 100 * (10**18);
+        if (
+            overMinTokenBalance &&
+            !inSwapAndLiquify &&
+            msg.sender != pancakePair &&
+            swapAndLiquifyEnabled &&
+            calculateLiquidityFee(amount) > 0
+        ) {
+            //add liquidity
+            swapAndLiquify(calculateLiquidityFee(amount));
         }
-        _balances[pancakePair] += calculateLiquidityFee(amount);
-        IPancakePair(pancakePair).sync();
-        
         
         emit Transfer(sender, recipient, tokenToTransfer);
     }
 
+
     function swapAndLiquify(uint256 contractTokenBalance) private lockTheSwap {
         // split the contract balance into halves
-        uint256 forLiquidity = contractTokenBalance.div(3);
-        uint256 devExp = contractTokenBalance.div(3);
-        uint256 forRewards = contractTokenBalance.div(3);
+        uint256 forLiquidity = contractTokenBalance.div(2);
+        uint256 devExp = contractTokenBalance.div(4);
+        uint256 forRewards = contractTokenBalance.div(4);
         // split the liquidity
-        uint256 otherHalf = forLiquidity.div(5);
-        uint256 half = forLiquidity.sub(otherHalf);
+        uint256 half = forLiquidity.div(2);
+        uint256 otherHalf = forLiquidity.sub(half);
         // capture the contract's current ETH balance.
         // this is so that we can capture exactly the amount of ETH that the
         // swap creates, and not make the liquidity event include any ETH that
@@ -1193,19 +1192,20 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
 
         // how much ETH did we just swap into?
         uint256 Balance = address(this).balance.sub(initialBalance);
-        uint256 oneFifth = Balance.div(5);
-        _marketingAddress.transfer(oneFifth);
-        _teamAddress.transfer(oneFifth);
-        payable(_buybackAddress).transfer(oneFifth);
-        payable(_psiAddress).transfer(oneFifth);
-       // for(uint256 i = 0; i < numberOfTokenHolders; i++){
-         //   uint256 share = (balanceOf(tokenHolder[i]).mul(ethFees)).div(totalSupply());
-           // myRewards[tokenHolder[i]] = myRewards[tokenHolder[i]].add(share);
-        //}
-        // add liquidity to pancake
-        addLiquidity(otherHalf, oneFifth);
-        
-        emit SwapAndLiquify(half, oneFifth, otherHalf);
+        if(Balance > 0){
+            uint256 oneThird = Balance.div(3);
+            payable(_marketingAddress).transfer(oneThird);
+            payable(_teamAddress).transfer(oneThird.div(3));
+            payable(_buybackAddress).transfer(oneThird.div(3));
+            payable(_psiAddress).transfer(oneThird.div(3));
+            // add liquidity to pancake
+            addLiquidity(otherHalf, oneThird);
+            emit SwapAndLiquify(half, oneThird, otherHalf);
+        }
+    }
+
+    function toggleTrading() public onlyOwner{
+        pauseTrade = !pauseTrade;
     }
        
 
