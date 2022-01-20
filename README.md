@@ -6,7 +6,7 @@ This project is using [Hardhat](https://hardhat.org/getting-started/) for develo
 
 * Binance Chain
   * AstroBirdz : [0x9624cd2e91504692e120802e80a313f84847dc40](https://bscscan.com/address/0x9624cd2e91504692e120802e80a313f84847dc40)
-  * AstroBirdzDividendTracker : [](https://bscscan.com/address/)
+  * AstroBirdzDividendTracker : [0x53789db481ce032B530B0a20dE940C21f5A8BD01](https://bscscan.com/address/0x53789db481ce032B530B0a20dE940C21f5A8BD01)
 
 * Binance Test Chain
   * AstroBirdz : [0x9624cd2e91504692e120802e80a313f84847dc40](https://testnet.bscscan.com/address/0x9624cd2e91504692e120802e80a313f84847dc40)

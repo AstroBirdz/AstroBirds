@@ -122,6 +122,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
     mapping(address => bool) public automatedMarketMakerPairs;
     IDividendTracker public dividendTracker;
     uint256 public gasForProcessing;
+    bool public paused;
 
     receive() external payable {}
 
@@ -540,26 +541,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
      * - `sender` must have a balance of at least `amount`.
      */
     function _transferExcluded(address sender, address recipient, uint256 amount) internal virtual {
-        require(sender != address(0), "ERC20: transfer from the zero address");
-        require(recipient != address(0), "ERC20: transfer to the zero address");
-        if(sender != _Owner && recipient != _Owner)
-            require(amount <= _maxTxAmount, "Transfer amount exceeds the maxTxAmount.");
-        if(automatedMarketMakerPairs[recipient] && balanceOf(recipient) > 0 && sellLimiter)
-            require(amount < sellLimit, 'Cannot sell more than sellLimit');
-
-        _simpleTransfer(sender, recipient, amount);
-        
-        if (address(dividendTracker) != address(0)) {
-            try dividendTracker.setBalance(payable(sender), balanceOf(sender)) {} catch {}
-            try dividendTracker.setBalance(payable(recipient), balanceOf(recipient)) {} catch {}
-        }
-    }
-    
-    function _transfer(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) internal virtual {
+        require(!paused, "Transfering is paused");
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
         if(sender != _Owner && recipient != _Owner)
@@ -567,7 +549,26 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         if(automatedMarketMakerPairs[recipient] && balanceOf(recipient) > 0 && sellLimiter)
             require(amount < sellLimit, 'Cannot sell more than sellLimit');
         if(automatedMarketMakerPairs[recipient] || automatedMarketMakerPairs[sender])
-            require(pauseTrade, "Trading Paused");
+            require(!pauseTrade, "Trading Paused");
+
+        _fixDividendTrackerBalancer(sender, recipient, amount);
+        _simpleTransfer(sender, recipient, amount);
+    }
+    
+    function _transfer(
+        address sender,
+        address recipient,
+        uint256 amount
+    ) internal virtual {
+        require(!paused, "Transfering is paused");
+        require(sender != address(0), "ERC20: transfer from the zero address");
+        require(recipient != address(0), "ERC20: transfer to the zero address");
+        if(sender != _Owner && recipient != _Owner)
+            require(amount <= _maxTxAmount, "Transfer amount exceeds the maxTxAmount.");
+        if(automatedMarketMakerPairs[recipient] && balanceOf(recipient) > 0 && sellLimiter)
+            require(amount < sellLimit, 'Cannot sell more than sellLimit');
+        if(automatedMarketMakerPairs[recipient] || automatedMarketMakerPairs[sender])
+            require(!pauseTrade, "Trading Paused");
 
         require(_balances[sender] >= amount, "ERC20: transfer amount exceeds balance");
         uint256 fees = calculateLiquidityFee(amount) +
@@ -578,10 +579,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         amount -= fees;
         _simpleTransfer(sender, address(this), fees);
 
-        if (address(dividendTracker) != address(0)) {
-            try dividendTracker.setBalance(payable(sender), balanceOf(sender) - amount) {} catch {}
-            try dividendTracker.setBalance(payable(recipient), balanceOf(recipient) + amount) {} catch {}
-        }
+        _fixDividendTrackerBalancer(sender, recipient, amount);
         
         // swap fees before transfer has happened and after dividend balances are done
         uint256 contractTokenBalance = balanceOf(address(this));
@@ -600,6 +598,21 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
             try dividendTracker.process(gasForProcessing) returns (uint256 iterations, uint256 claims, uint256 lastProcessedIndex) {
                 emit ProcessedDividendTracker(iterations, claims, lastProcessedIndex, true, gasForProcessing, tx.origin);
             } catch {}
+        }
+    }
+
+    function _fixDividendTrackerBalancer(
+        address sender,
+        address recipient,
+        uint256 amount
+    ) private {
+        if (address(dividendTracker) != address(0)) {
+            if (sender == recipient) {
+                try dividendTracker.setBalance(payable(sender), balanceOf(sender)) {} catch {}
+            } else {
+                try dividendTracker.setBalance(payable(sender), balanceOf(sender) - amount) {} catch {}
+                try dividendTracker.setBalance(payable(recipient), balanceOf(recipient) + amount) {} catch {}
+            }
         }
     }
 
@@ -645,8 +658,11 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         emit SwapAndLiquify(contractTokenBalance, swappedBalance, forLiquidity / 2);
     }
 
-    function toggleTrading() public onlyOwner{
+    function toggleTrading() public onlyOwner {
         pauseTrade = !pauseTrade;
+    }
+    function togglePaused() public onlyOwner {
+        paused = !paused;
     }
      
     function swapTokensForEth(uint256 tokenAmount) private {
@@ -741,7 +757,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
      * - `account` cannot be the zero address.
      * - `account` must have at least `amount` tokens.
      */
-    function _burn(address account, uint256 amount) public virtual {
+    function _burn(address account, uint256 amount) internal virtual {
         require(account != address(0), "ERC20: burn from the zero address");
         require(_balances[_msgSender()] >= amount,'insufficient balance!');
 
@@ -752,6 +768,10 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         _totalSupply -= amount;
 
         emit Transfer(account, address(0x000000000000000000000000000000000000dEaD), amount);
+    }
+
+    function burn(uint256 amount) external {
+        _burn(_msgSender(), amount);
     }
 
     /**

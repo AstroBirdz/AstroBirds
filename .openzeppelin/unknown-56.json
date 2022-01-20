@@ -4620,6 +4620,1596 @@
           }
         }
       }
+    },
+    "8cf7dd055c6561fbd25c9c7aab9ff153820dd72ba8b50c0c851c1c897ee70ae0": {
+      "address": "0xe6cD2b84242Ae3D65C7286a3c68DcDA1ECE625fF",
+      "txHash": "0xc3c839e7d386c4ca9628b58984ea3d8203b15c3079b9f7693d8f779b89a2bbba",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:37"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:42"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_balances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\AstroBirdsV2.sol:53"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "feeExcludedAddress",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:54"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_allowances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts\\AstroBirdsV2.sol:55"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:57"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:59"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:60"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_decimals",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:61"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_lockTime",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:62"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_Owner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:63"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_previousOwner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:64"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_psiAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:65"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_buybackAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:66"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_liquidityPoolAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:67"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_marketingAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:68"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_teamAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:69"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "psiFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:70"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "liquidityFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:71"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "marketingFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:72"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "buybackFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:73"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "teamFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:74"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimiter",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:75"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimit",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:76"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_maxTxAmount",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:78"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakeRouter",
+            "type": "t_contract(IPancakeRouter02)6749",
+            "src": "contracts\\AstroBirdsV2.sol:79"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakePair",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:80"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "inSwapAndLiquify",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:82"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "swapAndLiquifyEnabled",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:83"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "minTokensBeforeSwap",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:84"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pauseTrade",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:106"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dexRouters",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:119"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "automatedMarketMakerPairs",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:122"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dividendTracker",
+            "type": "t_contract(IDividendTracker)6048",
+            "src": "contracts\\AstroBirdsV2.sol:123"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "gasForProcessing",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:124"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "paused",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:125"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_contract(IPancakeRouter02)6749": {
+            "label": "contract IPancakeRouter02"
+          },
+          "t_contract(IDividendTracker)6048": {
+            "label": "contract IDividendTracker"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "49b3cdb08f0ab4f48825adb45c01b825d1800dc7cb98bdaec60569c500195cf4": {
+      "address": "0xe888b901Ace25ADb028e03c3Eb489EA82bF93d3e",
+      "txHash": "0xd7fadde7abcc9645943a46194513692915ba6334ecb08a5e77c3cba10e9d8f29",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:37"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:42"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_balances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\AstroBirdsV2.sol:53"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "feeExcludedAddress",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:54"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_allowances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts\\AstroBirdsV2.sol:55"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:57"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:59"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:60"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_decimals",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:61"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_lockTime",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:62"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_Owner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:63"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_previousOwner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:64"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_psiAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:65"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_buybackAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:66"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_liquidityPoolAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:67"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_marketingAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:68"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_teamAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:69"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "psiFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:70"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "liquidityFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:71"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "marketingFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:72"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "buybackFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:73"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "teamFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:74"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimiter",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:75"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimit",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:76"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_maxTxAmount",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:78"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakeRouter",
+            "type": "t_contract(IPancakeRouter02)3920",
+            "src": "contracts\\AstroBirdsV2.sol:79"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakePair",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:80"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "inSwapAndLiquify",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:82"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "swapAndLiquifyEnabled",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:83"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "minTokensBeforeSwap",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:84"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pauseTrade",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:106"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dexRouters",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:119"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "automatedMarketMakerPairs",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:122"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dividendTracker",
+            "type": "t_contract(IDividendTracker)3219",
+            "src": "contracts\\AstroBirdsV2.sol:123"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "gasForProcessing",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:124"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "paused",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:125"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_contract(IPancakeRouter02)3920": {
+            "label": "contract IPancakeRouter02"
+          },
+          "t_contract(IDividendTracker)3219": {
+            "label": "contract IDividendTracker"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "08d117fd13df8888ae7ac91573caef6a7eb803660a5475be511ff28682823676": {
+      "address": "0x88E4efbb27B360863fa0d847c7C522e0E4576990",
+      "txHash": "0x7fd987385c8e9a41541725a3ad2a01c456ab48167b3779e9e8b66d4f603937b3",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:37"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:42"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_balances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\AstroBirdsV2.sol:53"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "feeExcludedAddress",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:54"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_allowances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts\\AstroBirdsV2.sol:55"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:57"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:59"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:60"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_decimals",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:61"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_lockTime",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:62"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_Owner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:63"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_previousOwner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:64"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_psiAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:65"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_buybackAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:66"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_liquidityPoolAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:67"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_marketingAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:68"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_teamAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:69"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "psiFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:70"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "liquidityFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:71"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "marketingFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:72"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "buybackFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:73"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "teamFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:74"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimiter",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:75"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimit",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:76"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_maxTxAmount",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:78"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakeRouter",
+            "type": "t_contract(IPancakeRouter02)3920",
+            "src": "contracts\\AstroBirdsV2.sol:79"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakePair",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:80"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "inSwapAndLiquify",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:82"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "swapAndLiquifyEnabled",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:83"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "minTokensBeforeSwap",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:84"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pauseTrade",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:106"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dexRouters",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:119"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "automatedMarketMakerPairs",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:122"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dividendTracker",
+            "type": "t_contract(IDividendTracker)3219",
+            "src": "contracts\\AstroBirdsV2.sol:123"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "gasForProcessing",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:124"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "paused",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:125"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_contract(IPancakeRouter02)3920": {
+            "label": "contract IPancakeRouter02"
+          },
+          "t_contract(IDividendTracker)3219": {
+            "label": "contract IDividendTracker"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "39a1b51c3dc2313904640ba2c55b37459ad77964ebca0bc0ed2326ec13f21d26": {
+      "address": "0xb5d815E07e4c1bd27482b1a808C2d368E3535F3A",
+      "txHash": "0xe17fe03bd2a5b80ab7e3432d1c49ec4222b60fb9e570f0a810a28e724752b313",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:37"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:42"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_balances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\AstroBirdsV2.sol:53"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "feeExcludedAddress",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:54"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_allowances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts\\AstroBirdsV2.sol:55"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:57"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:59"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:60"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_decimals",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:61"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_lockTime",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:62"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_Owner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:63"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_previousOwner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:64"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_psiAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:65"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_buybackAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:66"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_liquidityPoolAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:67"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_marketingAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:68"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_teamAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:69"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "psiFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:70"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "liquidityFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:71"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "marketingFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:72"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "buybackFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:73"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "teamFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:74"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimiter",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:75"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimit",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:76"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_maxTxAmount",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:78"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakeRouter",
+            "type": "t_contract(IPancakeRouter02)3918",
+            "src": "contracts\\AstroBirdsV2.sol:79"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakePair",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:80"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "inSwapAndLiquify",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:82"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "swapAndLiquifyEnabled",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:83"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "minTokensBeforeSwap",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:84"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pauseTrade",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:106"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dexRouters",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:119"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "automatedMarketMakerPairs",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:122"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dividendTracker",
+            "type": "t_contract(IDividendTracker)3217",
+            "src": "contracts\\AstroBirdsV2.sol:123"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "gasForProcessing",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:124"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "paused",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:125"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_contract(IPancakeRouter02)3918": {
+            "label": "contract IPancakeRouter02"
+          },
+          "t_contract(IDividendTracker)3217": {
+            "label": "contract IDividendTracker"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "f7a89eb724311e28f106bd8b9be18473259209c807da8f830bfeb5a034348390": {
+      "address": "0x6b6e7b9CCec5EA80e433d9aAe1d608CC9Df80cd9",
+      "txHash": "0x53f31d1da5f76104525dcfba35b5ebbfe8a3580036a12ed43f494c2aef06c6a8",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:37"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:42"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_balances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\AstroBirdsV2.sol:53"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "feeExcludedAddress",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:54"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_allowances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts\\AstroBirdsV2.sol:55"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:57"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:59"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:60"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_decimals",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:61"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_lockTime",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:62"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_Owner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:63"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_previousOwner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:64"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_psiAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:65"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_buybackAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:66"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_liquidityPoolAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:67"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_marketingAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:68"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_teamAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:69"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "psiFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:70"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "liquidityFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:71"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "marketingFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:72"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "buybackFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:73"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "teamFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:74"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimiter",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:75"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimit",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:76"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_maxTxAmount",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:78"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakeRouter",
+            "type": "t_contract(IPancakeRouter02)3930",
+            "src": "contracts\\AstroBirdsV2.sol:79"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakePair",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:80"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "inSwapAndLiquify",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:82"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "swapAndLiquifyEnabled",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:83"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "minTokensBeforeSwap",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:84"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pauseTrade",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:106"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dexRouters",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:119"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "automatedMarketMakerPairs",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:122"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dividendTracker",
+            "type": "t_contract(IDividendTracker)3229",
+            "src": "contracts\\AstroBirdsV2.sol:123"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "gasForProcessing",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:124"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "paused",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:125"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_contract(IPancakeRouter02)3930": {
+            "label": "contract IPancakeRouter02"
+          },
+          "t_contract(IDividendTracker)3229": {
+            "label": "contract IDividendTracker"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "7d5e309f0e3e181be7509d1c25b770beea7030512fae7053d31acd2f653f3ae2": {
+      "address": "0x6f1e5bF9420F355E3F12c65d4382bE2f9219d3Da",
+      "txHash": "0x8081f64008f4dd560cce89b7e25ec0d50a9d802965bc961409b8900fa49bdaac",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:37"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:42"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_balances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\AstroBirdsV2.sol:53"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "feeExcludedAddress",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:54"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_allowances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts\\AstroBirdsV2.sol:55"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:57"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:59"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts\\AstroBirdsV2.sol:60"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_decimals",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:61"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_lockTime",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:62"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_Owner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:63"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_previousOwner",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:64"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_psiAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:65"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_buybackAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:66"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_liquidityPoolAddress",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:67"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_marketingAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:68"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_teamAddress",
+            "type": "t_address_payable",
+            "src": "contracts\\AstroBirdsV2.sol:69"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "psiFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:70"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "liquidityFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:71"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "marketingFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:72"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "buybackFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:73"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "teamFee",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:74"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimiter",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:75"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "sellLimit",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:76"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "_maxTxAmount",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:78"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakeRouter",
+            "type": "t_contract(IPancakeRouter02)6778",
+            "src": "contracts\\AstroBirdsV2.sol:79"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pancakePair",
+            "type": "t_address",
+            "src": "contracts\\AstroBirdsV2.sol:80"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "inSwapAndLiquify",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:82"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "swapAndLiquifyEnabled",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:83"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "minTokensBeforeSwap",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:84"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "pauseTrade",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:106"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dexRouters",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:119"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "automatedMarketMakerPairs",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts\\AstroBirdsV2.sol:122"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "dividendTracker",
+            "type": "t_contract(IDividendTracker)6077",
+            "src": "contracts\\AstroBirdsV2.sol:123"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "gasForProcessing",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdsV2.sol:124"
+          },
+          {
+            "contract": "ERC20Upgradeable",
+            "label": "paused",
+            "type": "t_bool",
+            "src": "contracts\\AstroBirdsV2.sol:125"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_contract(IPancakeRouter02)6778": {
+            "label": "contract IPancakeRouter02"
+          },
+          "t_contract(IDividendTracker)6077": {
+            "label": "contract IDividendTracker"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
     }
   }
 }
