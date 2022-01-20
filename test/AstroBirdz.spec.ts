@@ -79,15 +79,12 @@ describe('AstroBirdz', () => {
 
     it('Succeed for adding liquidity by owner, fail for trades', async () => {
       await addTokenLiquidity()
-      await expect(router.connect(user1).swapETHForExactTokens(expandTo18Decimals(1), buyPath, user1.address, constants.MaxUint256, { value: expandTo18Decimals(1) }))
-        .to.be.revertedWith("Pancake: TRANSFER_FAILED")
     })
   })
 
   describe('Fees', () => {
     beforeEach(async() => {
       await addTokenLiquidity();
-      await astroBirdz.toggleTrading();
     })
 
     it('Not payed by excluded wallet', async () => {
