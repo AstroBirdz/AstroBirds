@@ -16,7 +16,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
+import "./interfaces/token/IBEP20MintBurnable.sol";
 import './interfaces/IPancakeFactory.sol';
 import './interfaces/IPancakePair.sol';
 import './interfaces/IPancakeRouter02.sol';
@@ -47,7 +47,7 @@ import './interfaces/IDividendTracker.sol';
  * functions have been added to mitigate the well-known issues around setting
  * allowances. See {IERC20-approve}.
  */
-contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeable {
+contract ERC20Upgradeable is Initializable, ContextUpgradeable, IBEP20MintBurnable {
     using AddressUpgradeable for address;
     
     mapping (address => uint256) private _balances;
@@ -188,7 +188,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
 
         // use by default 300,000 gas to process auto-claiming dividends
         gasForProcessing = 300000;
-        minTokensBeforeSwap = 10000 * (10 ** decimals()); // min 10k tokens in contract before swapping
+        minTokensBeforeSwap = 10000 * (10 ** _decimals); // min 10k tokens in contract before swapping
         _liquidityPoolAddress = _Owner;
         _psiAddress = dividendTracker.dividendToken();
     }
@@ -221,8 +221,8 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
      * no way affects any of the arithmetic of the contract, including
      * {IERC20-balanceOf} and {IERC20-transfer}.
      */
-    function decimals() public view returns (uint) {
-        return _decimals;
+    function decimals() external view returns (uint8) {
+        return uint8(_decimals);
     }
 
     /**
@@ -237,6 +237,10 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
      */
     function balanceOf(address account) public view override returns (uint256) {
         return _balances[account];
+    }
+
+    function getOwner() public view override returns (address) {
+        return _Owner;
     }
     
     function calculateLiquidityFee(uint256 _amount) internal view returns (uint256) {

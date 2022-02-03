@@ -11,6 +11,7 @@ This project is using [Hardhat](https://hardhat.org/getting-started/) for develo
 * Binance Test Chain
   * AstroBirdz : [0x9624cd2e91504692e120802e80a313f84847dc40](https://testnet.bscscan.com/address/0x9624cd2e91504692e120802e80a313f84847dc40)
   * AstroBirdzDividendTracker : [0xe520E54598757CF2e35B9e02210b75309e3b8091](https://testnet.bscscan.com/address/0xe520E54598757CF2e35B9e02210b75309e3b8091)
+  * Staking : [0x49ae07126cd7fdc1e4be57bdc9eee6065ecee5e6](https://testnet.bscscan.com/address/0x49ae07126cd7fdc1e4be57bdc9eee6065ecee5e6)
 
 ### Basic Sample Hardhat Project
 

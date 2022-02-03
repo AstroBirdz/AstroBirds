@@ -49,7 +49,7 @@ const config: HardhatUserConfig = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 9999
+            runs: 999999
           }
         }
       },
@@ -81,6 +81,17 @@ const config: HardhatUserConfig = {
         } 
       }
     ],
+    overrides: {
+      "contracts/AstroBirdsV2.sol": {
+        version: "0.8.10",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 9999
+          }
+        }
+      }
+    }
   },
   paths: {
     sources: "./contracts",

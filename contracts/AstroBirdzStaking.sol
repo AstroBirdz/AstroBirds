@@ -1,0 +1,178 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8;
+
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
+import "./interfaces/token/IBEP20Upgradeable.sol";
+import "./interfaces/token/IBEP20MintBurnable.sol";
+
+contract AstroBirdzStaking is
+    Initializable,
+    OwnableUpgradeable,
+    ReentrancyGuardUpgradeable
+{
+	using SafeERC20Upgradeable for IBEP20MintBurnable;
+	using SafeERC20Upgradeable for IBEP20Upgradeable;
+
+    IBEP20MintBurnable public rewardsToken;
+    IBEP20Upgradeable public stakingToken;
+
+	uint256 private constant REWARD_INTERVAL = 365 * 24 * 60 * 60;
+
+	uint256 public startTime;
+
+	struct ConfiguredLock {
+		uint64 time; // in milliseconds
+		uint32 apy; // in basis points
+	}
+	ConfiguredLock[] public configuredLocks;
+
+	struct AccountStake {
+		bool active;
+		uint32 apy; // in basis points
+		uint64 started; // in milliseconds
+		uint64 unlock; // in milliseconds
+		uint64 lastUpdated; // in milliseconds
+		
+		uint256 stake;
+		uint256 currentRewards;
+		uint256 withdrawnRewards;
+	}
+	mapping(address => AccountStake[]) public allAccountStakes;
+
+	/* ========== EVENTS ========== */
+
+    // event RewardAdded(uint256 reward);
+    event Staked(address indexed user, uint256 indexed stakeId, uint256 amount);
+    event Withdrawn(address indexed user, uint256 indexed stakeId, uint256 amount);
+    event RewardPaid(address indexed user, uint256 indexed stakeId, uint256 reward);
+    // event RewardsDurationUpdated(uint256 newDuration);
+    // event Recovered(address token, uint256 amount);
+
+	/* ========== INITIALIZER ========== */
+
+    function initialize(address _stakingToken, address _rewardsToken)
+        public
+        initializer
+    {
+        __Ownable_init();
+        __ReentrancyGuard_init();
+
+        stakingToken = IBEP20Upgradeable(_stakingToken);
+        rewardsToken = IBEP20MintBurnable(_rewardsToken);
+
+		startTime = 1644865200; // Mon Feb 14 2022 19:00:00 GMT+0000
+
+		configuredLocks.push(ConfiguredLock(30 days, 500));
+		configuredLocks.push(ConfiguredLock(91 days, 800));
+		configuredLocks.push(ConfiguredLock(182.5 days, 1200));
+		configuredLocks.push(ConfiguredLock(365 days, 1800));
+		configuredLocks.push(ConfiguredLock(730 days, 2500));
+    }
+
+	/* ========== STAKING FUNCTIONS ========== */
+
+    function earned(address account, uint256 stakeId) public view returns (uint256) {
+		if (!allAccountStakes[account][stakeId].active)
+			return allAccountStakes[account][stakeId].currentRewards;
+
+		uint256 timeUntill = block.timestamp;
+		if (timeUntill > allAccountStakes[account][stakeId].unlock)
+			timeUntill = allAccountStakes[account][stakeId].unlock;
+		if (allAccountStakes[account][stakeId].lastUpdated >= timeUntill)
+			return allAccountStakes[account][stakeId].currentRewards;
+
+		return (((
+			allAccountStakes[account][stakeId].stake * 
+			allAccountStakes[account][stakeId].apy * 
+			(timeUntill - allAccountStakes[account][stakeId].lastUpdated)
+		) / REWARD_INTERVAL) / 10000) + allAccountStakes[account][stakeId].currentRewards;
+    }
+
+    function stake(uint256 _amount, uint256 _configuredLock) external {
+		require(block.timestamp >= startTime, "Staking not started");
+		require(configuredLocks.length > _configuredLock, "Lock does not exist");
+
+		allAccountStakes[_msgSender()].push(AccountStake(
+			true,
+			configuredLocks[_configuredLock].apy,
+			uint64(block.timestamp),
+			uint64(block.timestamp) + configuredLocks[_configuredLock].time,
+			uint64(block.timestamp),
+			_amount,
+			0,
+			0
+		));
+        stakingToken.safeTransferFrom(_msgSender(), address(this), _amount);
+
+		emit Staked(_msgSender(), allAccountStakes[_msgSender()].length -1, _amount);
+    }
+
+	modifier updateReward(address account, uint256 stakeId) {
+		if (allAccountStakes[account][stakeId].active) {
+			allAccountStakes[account][stakeId].lastUpdated = uint64(block.timestamp);
+			allAccountStakes[account][stakeId].currentRewards = earned(account, stakeId);
+			if (allAccountStakes[account][stakeId].lastUpdated >= allAccountStakes[account][stakeId].unlock)
+				allAccountStakes[account][stakeId].active = false;
+		}
+        _;
+    }
+
+    function withdraw(uint256 _amount, uint256 _stakeId) public nonReentrant updateReward(_msgSender(), _stakeId) {
+		require(block.timestamp >= allAccountStakes[_msgSender()][_stakeId].unlock, "Stake not unlocked");
+        allAccountStakes[_msgSender()][_stakeId].stake -= _amount;
+		if (allAccountStakes[_msgSender()][_stakeId].stake == 0)
+			allAccountStakes[_msgSender()][_stakeId].active = false;
+        stakingToken.safeTransfer(_msgSender(), _amount);
+
+		emit Withdrawn(_msgSender(), _stakeId, _amount);
+    }
+
+    function getReward(uint256 _stakeId) public nonReentrant updateReward(_msgSender(), _stakeId) {
+		if (allAccountStakes[_msgSender()][_stakeId].currentRewards == 0) return;
+        uint256 reward = allAccountStakes[_msgSender()][_stakeId].currentRewards;
+        allAccountStakes[_msgSender()][_stakeId].currentRewards = 0;
+		allAccountStakes[_msgSender()][_stakeId].withdrawnRewards += reward;
+        rewardsToken.safeTransfer(_msgSender(), reward);
+
+		emit RewardPaid(_msgSender(), _stakeId, reward);
+    }
+
+	function exit(uint256 _stakeId) public nonReentrant {
+        getReward(_stakeId);
+        withdraw(allAccountStakes[_msgSender()][_stakeId].stake, _stakeId);
+    }
+
+	function getAllRewards() external nonReentrant {
+		for (uint256 stakeId = 0; stakeId < allAccountStakes[_msgSender()].length; stakeId++) {
+			getReward(stakeId);
+		}
+	}
+
+	function exitUnlocked() external nonReentrant {
+		for (uint256 stakeId = 0; stakeId < allAccountStakes[_msgSender()].length; stakeId++) {
+			if (allAccountStakes[_msgSender()][stakeId].stake > 0 &&
+				block.timestamp >= allAccountStakes[_msgSender()][stakeId].unlock) {
+				exit(stakeId);
+			}
+		}
+	}
+
+	/* ========== ADMIN FUNCTIONS ========== */
+
+	function updateStartTime(uint256 _startTime) external onlyOwner {
+		startTime = _startTime;
+	}
+	function updateConfiguredLock(uint256 configuredLock, uint64 time, uint32 apy) external onlyOwner {
+		configuredLocks[configuredLock] = ConfiguredLock(time, apy);
+	}
+	function updateConfiguredLocks(ConfiguredLock[] memory locks) external onlyOwner {
+		delete configuredLocks;
+		for (uint256 idx = 0; idx < locks.length; idx++) {
+			configuredLocks.push(ConfiguredLock(locks[idx].time, locks[idx].apy));
+		}
+	}
+}

@@ -2,17 +2,19 @@
 
 pragma solidity ^0.8.4;
 
-import './token/IBEP20.sol';
+import '@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol';
 import './token/IDividendPayingTokenInterface.sol';
 import './token/IDividendPayingTokenOptionalInterface.sol';
 import './token/IERC20TokenRecover.sol';
 
 interface IDividendTracker is
-    IBEP20,
+    IERC20Metadata,
     IDividendPayingTokenInterface,
     IDividendPayingTokenOptionalInterface,
     IERC20TokenRecover
 {
+    function getOwner() external view returns (address);
+
     function lastProcessedIndex() external view returns (uint256);
 
     function excludedFromDividends(address account) external view returns (bool);
