@@ -555,11 +555,11 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IBEP20MintBurnab
         if(sender != _Owner && recipient != _Owner) {
             require(!paused, "Transfering is paused");
             require(amount <= _maxTxAmount, "Transfer amount exceeds the maxTxAmount.");
+            if(automatedMarketMakerPairs[recipient] && balanceOf(recipient) > 0 && sellLimiter)
+                require(amount < sellLimit, 'Cannot sell more than sellLimit');
+            if(automatedMarketMakerPairs[recipient] || automatedMarketMakerPairs[sender])
+                require(!pauseTrade, "Trading Paused");
         }
-        if(automatedMarketMakerPairs[recipient] && balanceOf(recipient) > 0 && sellLimiter)
-            require(amount < sellLimit, 'Cannot sell more than sellLimit');
-        if(automatedMarketMakerPairs[recipient] || automatedMarketMakerPairs[sender])
-            require(!pauseTrade, "Trading Paused");
 
         _fixDividendTrackerBalancer(sender, recipient, amount);
         _simpleTransfer(sender, recipient, amount);
@@ -575,11 +575,11 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IBEP20MintBurnab
         if(sender != _Owner && recipient != _Owner) {
             require(!paused, "Transfering is paused");
             require(amount <= _maxTxAmount, "Transfer amount exceeds the maxTxAmount.");
+            if(automatedMarketMakerPairs[recipient] && balanceOf(recipient) > 0 && sellLimiter)
+                require(amount < sellLimit, 'Cannot sell more than sellLimit');
+            if(automatedMarketMakerPairs[recipient] || automatedMarketMakerPairs[sender])
+                require(!pauseTrade, "Trading Paused");
         }
-        if(automatedMarketMakerPairs[recipient] && balanceOf(recipient) > 0 && sellLimiter)
-            require(amount < sellLimit, 'Cannot sell more than sellLimit');
-        if(automatedMarketMakerPairs[recipient] || automatedMarketMakerPairs[sender])
-            require(!pauseTrade, "Trading Paused");
 
         require(_balances[sender] >= amount, "ERC20: transfer amount exceeds balance");
         uint256 fees = calculateLiquidityFee(amount) +

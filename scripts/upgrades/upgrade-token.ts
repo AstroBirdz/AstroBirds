@@ -28,11 +28,11 @@ const main = async() => {
   console.log("AstroBirdsV2 upgraded:", astroBirdsV2.address);
 
   // const dividendTracker = new ethers.Contract("0xe520E54598757CF2e35B9e02210b75309e3b8091", AstroBirdzDividendTrackerAbi.abi, signer) as AstroBirdzDividendTracker; // test
-  const dividendTracker = new ethers.Contract("0x53789db481ce032B530B0a20dE940C21f5A8BD01", AstroBirdzDividendTrackerAbi.abi, signer) as AstroBirdzDividendTracker; // main
+  // const dividendTracker = new ethers.Contract("0x53789db481ce032B530B0a20dE940C21f5A8BD01", AstroBirdzDividendTrackerAbi.abi, signer) as AstroBirdzDividendTracker; // main
   // const AstroBirdzDividendTracker = await ethers.getContractFactory("AstroBirdzDividendTracker");
   // const dividendTracker = await AstroBirdzDividendTracker.connect(signer).deploy(psi, astroBirdsV2.address) as AstroBirdzDividendTracker;
   // await dividendTracker.deployed();
-  console.log("AstroBirdzDividendTracker deployed to:", dividendTracker.address);
+  // console.log("AstroBirdzDividendTracker deployed to:", dividendTracker.address);
 
   // await (await astroBirdsV2.initPSIDividendTracker(dividendTracker.address)).wait()
   // console.log("AstroBirdzDividendTracker initialized");

@@ -75,6 +75,10 @@ contract AstroBirdzStaking is
 
 	/* ========== STAKING FUNCTIONS ========== */
 
+	function allConfiguredLocks() external view returns (ConfiguredLock[] memory) {
+		return configuredLocks;
+	}
+
 	function accountStakes(address account, bool addEarned) external view returns (
 		AccountStake[] memory stakes,
 		uint256[] memory stakesEarned
