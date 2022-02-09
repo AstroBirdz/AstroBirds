@@ -97,6 +97,77 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "addEarned",
+        "type": "bool"
+      }
+    ],
+    "name": "accountStakes",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint32",
+            "name": "apy",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint64",
+            "name": "started",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "unlock",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "lastUpdated",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint256",
+            "name": "stake",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "currentRewards",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "withdrawnRewards",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct AstroBirdzStaking.AccountStake[]",
+        "name": "stakes",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "stakesEarned",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "",
         "type": "address"
       },

@@ -124,6 +124,8 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IBEP20MintBurnab
     uint256 public gasForProcessing;
     bool public paused;
 
+    mapping(address => bool) public isMinter;
+
     receive() external payable {}
 
     /**
@@ -161,6 +163,7 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IBEP20MintBurnab
         _psiAddress = psiAddress_;
         _buybackAddress = buybackAddress_;
         _Owner = _msgSender();
+        paused = true;
         
         pancakeRouter = IPancakeRouter02(router_);
          // Create a pancake pair for this new token
@@ -191,6 +194,8 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IBEP20MintBurnab
         minTokensBeforeSwap = 10000 * (10 ** _decimals); // min 10k tokens in contract before swapping
         _liquidityPoolAddress = _Owner;
         _psiAddress = dividendTracker.dividendToken();
+
+        isMinter[_Owner] = true;
     }
 
     /**
@@ -545,11 +550,12 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IBEP20MintBurnab
      * - `sender` must have a balance of at least `amount`.
      */
     function _transferExcluded(address sender, address recipient, uint256 amount) internal virtual {
-        require(!paused, "Transfering is paused");
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
-        if(sender != _Owner && recipient != _Owner)
+        if(sender != _Owner && recipient != _Owner) {
+            require(!paused, "Transfering is paused");
             require(amount <= _maxTxAmount, "Transfer amount exceeds the maxTxAmount.");
+        }
         if(automatedMarketMakerPairs[recipient] && balanceOf(recipient) > 0 && sellLimiter)
             require(amount < sellLimit, 'Cannot sell more than sellLimit');
         if(automatedMarketMakerPairs[recipient] || automatedMarketMakerPairs[sender])
@@ -564,11 +570,12 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IBEP20MintBurnab
         address recipient,
         uint256 amount
     ) internal virtual {
-        require(!paused, "Transfering is paused");
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
-        if(sender != _Owner && recipient != _Owner)
+        if(sender != _Owner && recipient != _Owner) {
+            require(!paused, "Transfering is paused");
             require(amount <= _maxTxAmount, "Transfer amount exceeds the maxTxAmount.");
+        }
         if(automatedMarketMakerPairs[recipient] && balanceOf(recipient) > 0 && sellLimiter)
             require(amount < sellLimit, 'Cannot sell more than sellLimit');
         if(automatedMarketMakerPairs[recipient] || automatedMarketMakerPairs[sender])
@@ -745,9 +752,22 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IBEP20MintBurnab
         emit Transfer(address(0), account, amount);
     }
 
-    function mint(address account, uint256 amount) external onlyOwner {
-        require(_msgSender() == tx.origin, "Invalid Request");
+    function mint(address account, uint256 amount) external {
+        require(isMinter[_msgSender()], "Not allowed");
         _mint(account, amount);
+    }
+
+    function addMinter(address minter) external onlyOwner {
+        require(!isMinter[minter], "IS_MINTER");
+        isMinter[minter] = true;
+    }
+
+    function revokeMinter() external {
+        isMinter[_msgSender()] = false;
+    }
+
+    function removeMinter(address minter) external onlyOwner {
+        isMinter[minter] = false;
     }
 
     /**

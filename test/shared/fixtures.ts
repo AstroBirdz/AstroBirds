@@ -66,6 +66,7 @@ export async function v2Fixture([wallet, marketing, team, buyback]: Wallet[], pr
     astroBirdz.address
   ], {initializer: 'initialize'}) as AstroBirdzStaking;
   await (await astroBirdz.excludeFromFeesAndDividends(staking.address)).wait()
+  await (await astroBirdz.addMinter(staking.address)).wait()
 
   return {
     WBNB,

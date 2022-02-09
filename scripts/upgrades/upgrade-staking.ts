@@ -6,6 +6,7 @@ import { ethers, upgrades, run } from "hardhat";
 import { AstroBirdsV2, AstroBirdzStaking }  from '../../typechain';
 
 import AstroBirdsV2Abi from '../../artifacts/contracts/AstroBirdsV2.sol/AstroBirdsV2.json'
+import AstroBirdzStakingAbi from '../../artifacts/contracts/AstroBirdzStaking.sol/AstroBirdzStaking.json'
 
 const main = async() => {
 
@@ -16,25 +17,28 @@ const main = async() => {
   console.log("upgrading");
   
   let astroBirdsV2 = new ethers.Contract("0x9624cd2e91504692e120802e80a313f84847dc40", AstroBirdsV2Abi.abi, signer) as AstroBirdsV2; // bsc main and test
-  const AstroBirdsV2 = await ethers.getContractFactory("AstroBirdsV2");
-  astroBirdsV2 = await upgrades.upgradeProxy(astroBirdsV2.address, AstroBirdsV2) as AstroBirdsV2
-  await astroBirdsV2.deployed();
-  console.log("AstroBirdsV2 upgraded:", astroBirdsV2.address);
+  // const AstroBirdsV2 = await ethers.getContractFactory("AstroBirdsV2");
+  // astroBirdsV2 = await upgrades.upgradeProxy(astroBirdsV2.address, AstroBirdsV2) as AstroBirdsV2
+  // await astroBirdsV2.deployed();
+  // console.log("AstroBirdsV2 upgraded:", astroBirdsV2.address);
 
   // staking
+  let staking = new ethers.Contract("0x49ae07126cd7fdc1e4be57bdc9eee6065ecee5e6", AstroBirdzStakingAbi.abi, signer) as AstroBirdzStaking; // bsc main and test
   const AstroBirdzStaking = await ethers.getContractFactory("AstroBirdzStaking");
-  const staking = await upgrades.deployProxy(AstroBirdzStaking, [
-    astroBirdsV2.address,
-    astroBirdsV2.address
-  ], {initializer: 'initialize'}) as AstroBirdzStaking;
-  await (await astroBirdsV2.excludeFromFeesAndDividends(staking.address)).wait()
+  staking = await upgrades.upgradeProxy(staking.address, AstroBirdzStaking) as AstroBirdzStaking
+  // const staking = await upgrades.deployProxy(AstroBirdzStaking, [
+  //   astroBirdsV2.address,
+  //   astroBirdsV2.address
+  // ], {initializer: 'initialize'}) as AstroBirdzStaking;
+  await staking.deployed();
+  // await (await astroBirdsV2.excludeFromFeesAndDividends(staking.address)).wait()
+  // await (await astroBirdsV2.addMinter(staking.address)).wait()
   console.log("AstroBirdzStaking deployed:", staking.address);
-
   
-  const abImplAddress = await upgrades.erc1967.getImplementationAddress(astroBirdsV2.address)
-  console.log("AstroBirdsV2 implementation address:", abImplAddress);
-  await run("verify:verify", { address: abImplAddress, constructorArguments: [] });
-  console.log("AstroBirdsV2 implementation verified");
+  // const abImplAddress = await upgrades.erc1967.getImplementationAddress(astroBirdsV2.address)
+  // console.log("AstroBirdsV2 implementation address:", abImplAddress);
+  // await run("verify:verify", { address: abImplAddress, constructorArguments: [] });
+  // console.log("AstroBirdsV2 implementation verified");
 
   const stakingImplAddress = await upgrades.erc1967.getImplementationAddress(staking.address)
   console.log("AstroBirdzStaking implementation address:", stakingImplAddress);

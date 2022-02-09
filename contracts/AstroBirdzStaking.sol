@@ -64,7 +64,7 @@ contract AstroBirdzStaking is
         stakingToken = IBEP20Upgradeable(_stakingToken);
         rewardsToken = IBEP20MintBurnable(_rewardsToken);
 
-		startTime = 1644865200; // Mon Feb 14 2022 19:00:00 GMT+0000
+		startTime = 1644865200;
 
 		configuredLocks.push(ConfiguredLock(30 days, 500));
 		configuredLocks.push(ConfiguredLock(91 days, 800));
@@ -74,6 +74,20 @@ contract AstroBirdzStaking is
     }
 
 	/* ========== STAKING FUNCTIONS ========== */
+
+	function accountStakes(address account, bool addEarned) external view returns (
+		AccountStake[] memory stakes,
+		uint256[] memory stakesEarned
+	) {
+		stakes = allAccountStakes[account];
+
+		if (addEarned) {
+			stakesEarned = new uint256[](allAccountStakes[account].length);
+			for (uint256 idx; idx < allAccountStakes[account].length; idx++) {
+				stakesEarned[idx] = earned(account, idx);
+			}
+		}
+	}
 
     function earned(address account, uint256 stakeId) public view returns (uint256) {
 		if (!allAccountStakes[account][stakeId].active)
@@ -111,17 +125,22 @@ contract AstroBirdzStaking is
 		emit Staked(_msgSender(), allAccountStakes[_msgSender()].length -1, _amount);
     }
 
+	function _updateReward(address account, uint256 stakeId) private {
+		require(allAccountStakes[account].length > stakeId, "User stake does not exist");
+		if (!allAccountStakes[account][stakeId].active) return;
+
+		allAccountStakes[account][stakeId].currentRewards = earned(account, stakeId);
+		allAccountStakes[account][stakeId].lastUpdated = uint64(block.timestamp);
+		if (allAccountStakes[account][stakeId].lastUpdated >= allAccountStakes[account][stakeId].unlock)
+			allAccountStakes[account][stakeId].active = false;
+	}
+
 	modifier updateReward(address account, uint256 stakeId) {
-		if (allAccountStakes[account][stakeId].active) {
-			allAccountStakes[account][stakeId].lastUpdated = uint64(block.timestamp);
-			allAccountStakes[account][stakeId].currentRewards = earned(account, stakeId);
-			if (allAccountStakes[account][stakeId].lastUpdated >= allAccountStakes[account][stakeId].unlock)
-				allAccountStakes[account][stakeId].active = false;
-		}
+		_updateReward(account, stakeId);
         _;
     }
 
-    function withdraw(uint256 _amount, uint256 _stakeId) public nonReentrant updateReward(_msgSender(), _stakeId) {
+	function _withdraw(uint256 _amount, uint256 _stakeId) private {
 		require(block.timestamp >= allAccountStakes[_msgSender()][_stakeId].unlock, "Stake not unlocked");
         allAccountStakes[_msgSender()][_stakeId].stake -= _amount;
 		if (allAccountStakes[_msgSender()][_stakeId].stake == 0)
@@ -131,24 +150,34 @@ contract AstroBirdzStaking is
 		emit Withdrawn(_msgSender(), _stakeId, _amount);
     }
 
-    function getReward(uint256 _stakeId) public nonReentrant updateReward(_msgSender(), _stakeId) {
+    function withdraw(uint256 _amount, uint256 _stakeId) public nonReentrant updateReward(_msgSender(), _stakeId) {
+		_withdraw(_amount, _stakeId);
+    }
+
+	function _getReward(uint256 _stakeId) private {
 		if (allAccountStakes[_msgSender()][_stakeId].currentRewards == 0) return;
         uint256 reward = allAccountStakes[_msgSender()][_stakeId].currentRewards;
         allAccountStakes[_msgSender()][_stakeId].currentRewards = 0;
 		allAccountStakes[_msgSender()][_stakeId].withdrawnRewards += reward;
-        rewardsToken.safeTransfer(_msgSender(), reward);
+
+		rewardsToken.mint(_msgSender(), reward);
 
 		emit RewardPaid(_msgSender(), _stakeId, reward);
+	}
+
+    function getReward(uint256 _stakeId) public nonReentrant updateReward(_msgSender(), _stakeId) {
+		_getReward(_stakeId);
     }
 
 	function exit(uint256 _stakeId) public nonReentrant {
-        getReward(_stakeId);
-        withdraw(allAccountStakes[_msgSender()][_stakeId].stake, _stakeId);
+        _getReward(_stakeId);
+        _withdraw(allAccountStakes[_msgSender()][_stakeId].stake, _stakeId);
     }
 
 	function getAllRewards() external nonReentrant {
 		for (uint256 stakeId = 0; stakeId < allAccountStakes[_msgSender()].length; stakeId++) {
-			getReward(stakeId);
+			_updateReward(_msgSender(), stakeId);
+			_getReward(stakeId);
 		}
 	}
 
@@ -156,7 +185,8 @@ contract AstroBirdzStaking is
 		for (uint256 stakeId = 0; stakeId < allAccountStakes[_msgSender()].length; stakeId++) {
 			if (allAccountStakes[_msgSender()][stakeId].stake > 0 &&
 				block.timestamp >= allAccountStakes[_msgSender()][stakeId].unlock) {
-				exit(stakeId);
+				_getReward(stakeId);
+        		_withdraw(allAccountStakes[_msgSender()][stakeId].stake, stakeId);
 			}
 		}
 	}

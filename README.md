@@ -2,7 +2,19 @@
 
 This project is using [Hardhat](https://hardhat.org/getting-started/) for development, compiling, testing and deploying. The development tool used for development is [Visual Studio Code](https://code.visualstudio.com/) which has [great plugins](https://hardhat.org/guides/vscode-tests.html) for solidity development and mocha testing.
 
-## Contracts
+## New contracts
+
+* Binance Chain
+  * AstroBirdz : [0x7f3E9bdB55a0fA72BD6025C0ee1dfC3276cE3CF9](https://bscscan.com/address/0x7f3E9bdB55a0fA72BD6025C0ee1dfC3276cE3CF9)
+  * AstroBirdzDividendTracker : [0xf1222021341e456441d5857D1068E5DE941ad5B5](https://bscscan.com/address/0xf1222021341e456441d5857D1068E5DE941ad5B5)
+  * Staking : [0x26acfbF060d2Ca49F50d7793b22633fd8DFa28E5](https://bscscan.com/address/0x26acfbF060d2Ca49F50d7793b22633fd8DFa28E5)
+
+* Binance Test Chain
+  * AstroBirdz : [0x26acfbF060d2Ca49F50d7793b22633fd8DFa28E5](https://testnet.bscscan.com/address/0x26acfbF060d2Ca49F50d7793b22633fd8DFa28E5)
+  * AstroBirdzDividendTracker : [0x5fb0C0EcDA9f536df1627047C1FbDB7da8a83f60](https://testnet.bscscan.com/address/0x5fb0C0EcDA9f536df1627047C1FbDB7da8a83f60)
+  * Staking : [0x6bAf0fC5A1237cdb7d346Ff8115277502C4eBb54](https://testnet.bscscan.com/address/0x6bAf0fC5A1237cdb7d346Ff8115277502C4eBb54)
+
+## Old contracts
 
 * Binance Chain
   * AstroBirdz : [0x9624cd2e91504692e120802e80a313f84847dc40](https://bscscan.com/address/0x9624cd2e91504692e120802e80a313f84847dc40)

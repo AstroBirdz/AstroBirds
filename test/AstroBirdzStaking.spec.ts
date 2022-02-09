@@ -1,6 +1,6 @@
 import chai, { expect } from 'chai'
 import { constants } from 'ethers'
-import { waffle } from 'hardhat'
+import { network, waffle } from 'hardhat'
 
 import { expandTo18Decimals, mineBlock } from './shared/utilities'
 import { v2Fixture } from './shared/fixtures'
@@ -21,6 +21,7 @@ describe('AstroBirdzStaking', () => {
     { time: 365 * 86400, apy: 1800 }, // 365 days
     { time: 730 * 86400, apy: 2500 }, // 730 days
   ]
+  const yearMS = 365 * 24 * 60 * 60
 
   let astroBirdz: AstroBirdsV2
   let staking: AstroBirdzStaking
@@ -58,15 +59,34 @@ describe('AstroBirdzStaking', () => {
 
     it('Succeeds for stake 0', async () => {
       const lock = configuredLocks[0]
-      const totalRewards = stakeAmount.mul(lock.apy).div(10000)
-      await mineBlock(startTime)
+      const totalRewards = stakeAmount.mul(lock.apy).mul(lock.time).div(yearMS).div(10000)
+      let currentBalance = (await astroBirdz.balanceOf(user1.address)).sub(stakeAmount)
 
       await astroBirdz.connect(user1).approve(staking.address, stakeAmount)
+      await network.provider.send("evm_setNextBlockTimestamp", [startTime])
       await staking.connect(user1).stake(stakeAmount, 0)
       expect(await astroBirdz.balanceOf(staking.address)).to.eq(stakeAmount)
 
-      await mineBlock(startTime + lock.time / 2)
-      expect(await staking.earned(user1.address, 0)).to.eq(totalRewards.div(2))
+      await mineBlock(startTime + (lock.time / 4))
+      expect(await staking.earned(user1.address, 0)).to.eq(totalRewards.div(4))
+
+      await network.provider.send("evm_setNextBlockTimestamp", [startTime + (lock.time / 2)])
+      await staking.connect(user1).getReward(0)
+      currentBalance = currentBalance.add(totalRewards.div(2))
+      expect(await astroBirdz.balanceOf(user1.address)).to.eq(currentBalance)
+
+      await network.provider.send("evm_setNextBlockTimestamp", [startTime + lock.time - 1])
+      await expect(staking.connect(user1).withdraw(stakeAmount, 0)).to.be.revertedWith("Stake not unlocked")
+
+      await network.provider.send("evm_setNextBlockTimestamp", [startTime + lock.time])
+      currentBalance = currentBalance.add(stakeAmount.div(2))
+      await (await staking.connect(user1).withdraw(stakeAmount.div(2), 0)).wait()
+      expect(await astroBirdz.balanceOf(user1.address)).to.eq(currentBalance)
+
+      await network.provider.send("evm_setNextBlockTimestamp", [startTime + lock.time + (48 * 60 * 60)])
+      currentBalance = currentBalance.add(stakeAmount.div(2)).add(totalRewards.div(2))
+      await (await staking.connect(user1).exit(0)).wait()
+      expect(await astroBirdz.balanceOf(user1.address)).to.eq(currentBalance)
     })
   })
 })
