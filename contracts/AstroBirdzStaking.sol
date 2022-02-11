@@ -113,6 +113,7 @@ contract AstroBirdzStaking is
     function stake(uint256 _amount, uint256 _configuredLock) external {
 		require(block.timestamp >= startTime, "Staking not started");
 		require(configuredLocks.length > _configuredLock, "Lock does not exist");
+		require(_amount >= 20000 * (10**18), "The minimum staking amount is 20.000 tokens");
 
 		allAccountStakes[_msgSender()].push(AccountStake(
 			true,

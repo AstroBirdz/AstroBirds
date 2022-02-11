@@ -7098,6 +7098,174 @@
           }
         }
       }
+    },
+    "0cf134043919e09337f806eed32f0dc09903a7ebe2f5c348d68e0436323bcb56": {
+      "address": "0x1eA5658aF7889Ebd7CBfBA81e2f83aFDB7CA4812",
+      "txHash": "0x822f9bb8110afc15a9dd185eeb3f98ae723df64237e53a537a7560e9611ca22f",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:37"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:42"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:82"
+          },
+          {
+            "contract": "ReentrancyGuardUpgradeable",
+            "label": "_status",
+            "type": "t_uint256",
+            "src": "@openzeppelin\\contracts-upgradeable\\security\\ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "contract": "ReentrancyGuardUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\security\\ReentrancyGuardUpgradeable.sol:68"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "rewardsToken",
+            "type": "t_contract(IBEP20MintBurnable)1747",
+            "src": "contracts\\AstroBirdzStaking.sol:20"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "stakingToken",
+            "type": "t_contract(IBEP20Upgradeable)1759",
+            "src": "contracts\\AstroBirdzStaking.sol:21"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "startTime",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdzStaking.sol:25"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "configuredLocks",
+            "type": "t_array(t_struct(ConfiguredLock)890_storage)dyn_storage",
+            "src": "contracts\\AstroBirdzStaking.sol:31"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "allAccountStakes",
+            "type": "t_mapping(t_address,t_array(t_struct(AccountStake)911_storage)dyn_storage)",
+            "src": "contracts\\AstroBirdzStaking.sol:44"
+          }
+        ],
+        "types": {
+          "t_contract(IBEP20MintBurnable)1747": {
+            "label": "contract IBEP20MintBurnable"
+          },
+          "t_contract(IBEP20Upgradeable)1759": {
+            "label": "contract IBEP20Upgradeable"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_array(t_struct(ConfiguredLock)890_storage)dyn_storage": {
+            "label": "struct AstroBirdzStaking.ConfiguredLock[]"
+          },
+          "t_struct(ConfiguredLock)890_storage": {
+            "label": "struct AstroBirdzStaking.ConfiguredLock",
+            "members": [
+              {
+                "label": "time",
+                "type": "t_uint64"
+              },
+              {
+                "label": "apy",
+                "type": "t_uint32"
+              }
+            ]
+          },
+          "t_uint64": {
+            "label": "uint64"
+          },
+          "t_uint32": {
+            "label": "uint32"
+          },
+          "t_mapping(t_address,t_array(t_struct(AccountStake)911_storage)dyn_storage)": {
+            "label": "mapping(address => struct AstroBirdzStaking.AccountStake[])"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_struct(AccountStake)911_storage)dyn_storage": {
+            "label": "struct AstroBirdzStaking.AccountStake[]"
+          },
+          "t_struct(AccountStake)911_storage": {
+            "label": "struct AstroBirdzStaking.AccountStake",
+            "members": [
+              {
+                "label": "active",
+                "type": "t_bool"
+              },
+              {
+                "label": "apy",
+                "type": "t_uint32"
+              },
+              {
+                "label": "started",
+                "type": "t_uint64"
+              },
+              {
+                "label": "unlock",
+                "type": "t_uint64"
+              },
+              {
+                "label": "lastUpdated",
+                "type": "t_uint64"
+              },
+              {
+                "label": "stake",
+                "type": "t_uint256"
+              },
+              {
+                "label": "currentRewards",
+                "type": "t_uint256"
+              },
+              {
+                "label": "withdrawnRewards",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
     }
   }
 }

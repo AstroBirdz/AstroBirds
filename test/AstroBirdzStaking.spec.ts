@@ -30,6 +30,8 @@ describe('AstroBirdzStaking', () => {
     astroBirdz = fixture.astroBirdz
     staking = fixture.staking
 
+    await astroBirdz.togglePaused()
+
     astroBirdz.transfer(user1.address, expandTo18Decimals(10000000))
     astroBirdz.transfer(user2.address, expandTo18Decimals(10000000))
   })

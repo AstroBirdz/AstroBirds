@@ -35,6 +35,8 @@ describe('AstroBirdz', () => {
     dividendTracker = fixture.dividendTracker
     pair = fixture.pair
 
+    await astroBirdz.togglePaused()
+
     buyPath = [ WBNB.address, astroBirdz.address ]
     sellPath = [ astroBirdz.address, WBNB.address ]
   })

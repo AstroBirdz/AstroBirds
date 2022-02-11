@@ -3447,13 +3447,181 @@
           {
             "contract": "AstroBirdzStaking",
             "label": "rewardsToken",
-            "type": "t_contract(IBEP20MintBurnable)5576",
+            "type": "t_contract(IBEP20MintBurnable)1735",
             "src": "contracts\\AstroBirdzStaking.sol:20"
           },
           {
             "contract": "AstroBirdzStaking",
             "label": "stakingToken",
-            "type": "t_contract(IBEP20Upgradeable)5588",
+            "type": "t_contract(IBEP20Upgradeable)1747",
+            "src": "contracts\\AstroBirdzStaking.sol:21"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "startTime",
+            "type": "t_uint256",
+            "src": "contracts\\AstroBirdzStaking.sol:25"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "configuredLocks",
+            "type": "t_array(t_struct(ConfiguredLock)890_storage)dyn_storage",
+            "src": "contracts\\AstroBirdzStaking.sol:31"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "allAccountStakes",
+            "type": "t_mapping(t_address,t_array(t_struct(AccountStake)911_storage)dyn_storage)",
+            "src": "contracts\\AstroBirdzStaking.sol:44"
+          }
+        ],
+        "types": {
+          "t_contract(IBEP20MintBurnable)1735": {
+            "label": "contract IBEP20MintBurnable"
+          },
+          "t_contract(IBEP20Upgradeable)1747": {
+            "label": "contract IBEP20Upgradeable"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_array(t_struct(ConfiguredLock)890_storage)dyn_storage": {
+            "label": "struct AstroBirdzStaking.ConfiguredLock[]"
+          },
+          "t_struct(ConfiguredLock)890_storage": {
+            "label": "struct AstroBirdzStaking.ConfiguredLock",
+            "members": [
+              {
+                "label": "time",
+                "type": "t_uint64"
+              },
+              {
+                "label": "apy",
+                "type": "t_uint32"
+              }
+            ]
+          },
+          "t_uint64": {
+            "label": "uint64"
+          },
+          "t_uint32": {
+            "label": "uint32"
+          },
+          "t_mapping(t_address,t_array(t_struct(AccountStake)911_storage)dyn_storage)": {
+            "label": "mapping(address => struct AstroBirdzStaking.AccountStake[])"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_struct(AccountStake)911_storage)dyn_storage": {
+            "label": "struct AstroBirdzStaking.AccountStake[]"
+          },
+          "t_struct(AccountStake)911_storage": {
+            "label": "struct AstroBirdzStaking.AccountStake",
+            "members": [
+              {
+                "label": "active",
+                "type": "t_bool"
+              },
+              {
+                "label": "apy",
+                "type": "t_uint32"
+              },
+              {
+                "label": "started",
+                "type": "t_uint64"
+              },
+              {
+                "label": "unlock",
+                "type": "t_uint64"
+              },
+              {
+                "label": "lastUpdated",
+                "type": "t_uint64"
+              },
+              {
+                "label": "stake",
+                "type": "t_uint256"
+              },
+              {
+                "label": "currentRewards",
+                "type": "t_uint256"
+              },
+              {
+                "label": "withdrawnRewards",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "0cf134043919e09337f806eed32f0dc09903a7ebe2f5c348d68e0436323bcb56": {
+      "address": "0xA79F63F045583d2b45EC7d6fd3741bBbD5129660",
+      "txHash": "0xe31fc3c3e3f3a14c2568480de051fbe86952436f49413dacb7011c446edbcf32",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:37"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:42"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:82"
+          },
+          {
+            "contract": "ReentrancyGuardUpgradeable",
+            "label": "_status",
+            "type": "t_uint256",
+            "src": "@openzeppelin\\contracts-upgradeable\\security\\ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "contract": "ReentrancyGuardUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin\\contracts-upgradeable\\security\\ReentrancyGuardUpgradeable.sol:68"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "rewardsToken",
+            "type": "t_contract(IBEP20MintBurnable)5588",
+            "src": "contracts\\AstroBirdzStaking.sol:20"
+          },
+          {
+            "contract": "AstroBirdzStaking",
+            "label": "stakingToken",
+            "type": "t_contract(IBEP20Upgradeable)5600",
             "src": "contracts\\AstroBirdzStaking.sol:21"
           },
           {
@@ -3476,10 +3644,10 @@
           }
         ],
         "types": {
-          "t_contract(IBEP20MintBurnable)5576": {
+          "t_contract(IBEP20MintBurnable)5588": {
             "label": "contract IBEP20MintBurnable"
           },
-          "t_contract(IBEP20Upgradeable)5588": {
+          "t_contract(IBEP20Upgradeable)5600": {
             "label": "contract IBEP20Upgradeable"
           },
           "t_uint256": {
